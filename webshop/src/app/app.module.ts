@@ -7,10 +7,11 @@ import { FooterComponent } from './ui/footer/footer.component';
 import { HeaderComponent } from './ui/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { HomeComponent } from './business/components/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, HomeComponent],
+  imports: [BrowserModule, AppRoutingModule, AutoCompleteModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,29 @@
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .header {
-  color: red;
+  height: 10vh;
+  background-color: lightgray;
+}
+
+/* Style the main content */
+.content {
+  flex: 1; /* Allow the main content to grow and take up remaining space */
+}
+
+/* Style the footer */
+.footer {
+  height: 10vh;
+  background-color: lightgray;
+}
+
+body,
+html {
+  margin: 0 !important;
+  padding: 0 !important;
 }
