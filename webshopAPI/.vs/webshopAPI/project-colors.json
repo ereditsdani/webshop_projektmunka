@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9b304b64-a845-4ebe-b25a-8eff66383837": {
+      "ProjectGuid": "9b304b64-a845-4ebe-b25a-8eff66383837",
+      "DisplayName": "webshopAPI",
+      "ColorIndex": 0
+    },
+    "05055dc8-49b3-4604-be90-4760c98df397": {
+      "ProjectGuid": "05055dc8-49b3-4604-be90-4760c98df397",
+      "DisplayName": "webshopAPI.domain",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
