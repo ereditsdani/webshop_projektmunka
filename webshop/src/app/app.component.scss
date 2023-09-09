@@ -8,18 +8,20 @@
 
 .header {
   height: 10vh;
-  background-color: lightgray;
+  background-color: #d5e5f6;
+}
+
+
+/* Style the footer */
+.footer {
+  height: 10vh;
+  background-color: #d5e5f6;
 }
 
 /* Style the main content */
 .content {
   flex: 1; /* Allow the main content to grow and take up remaining space */
-}
-
-/* Style the footer */
-.footer {
-  height: 10vh;
-  background-color: lightgray;
+  background-color: #d5e5f6;
 }
 
 body,

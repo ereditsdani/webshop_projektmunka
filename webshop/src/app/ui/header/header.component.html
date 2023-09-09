@@ -1,1 +1,58 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-xl navbar-light">
+
+    <div class="container-fluid ">
+
+
+        <a class="navbar-brand" href="#">
+            <img src="assets/header/main_logo.png" alt="logo" class="img-responsive" width="100" height="100">
+            Electronic Emporium
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto align-items-center">
+                <li class="nav-item">
+                    <!-- Add (click) event and preventDefault() -->
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'Főoldal'" (click)="setActiveButton('Főoldal', $event)"
+                        href="#">Főoldal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'Keresés'" (click)="setActiveButton('Keresés', $event)"
+                        href="#">Keresés</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'Szervíz'" (click)="setActiveButton('Szervíz', $event)"
+                        href="#">Szervíz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'Újdonság'" (click)="setActiveButton('Újdonság', $event)"
+                        href="#">Újdonság</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'GyIK'" (click)="setActiveButton('GyIK', $event)"
+                        href="#">GyIK</a>
+                </li>
+
+                <li>
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'Belépés'" (click)="setActiveButton('Belépés', $event)"
+                        href="#">Belépés</a>
+                </li>
+                <li>
+                    <a class="nav-link btn d-flex justify-content-center align-items-center"
+                        [class.btn-primary]="activeButton === 'Regisztráció'"
+                        (click)="setActiveButton('Regisztráció', $event)" href="#">Regisztráció</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
