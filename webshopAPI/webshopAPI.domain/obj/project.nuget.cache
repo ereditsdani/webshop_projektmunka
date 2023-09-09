@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AGdSw1fe640D/jLYQA+6lh3NEdSEwB5362FNTX8VRgEFoq0YKd29m+odDHHV8eqwYx+sLwaA923QautenR/cgQ==",
+  "dgSpecHash": "RdLJD3RX5Flc9PX1qZBW4ydVNMn0Bimj+DVYspjpuCyx3gH5lZWrRA5a6U3s8I9XhYxbPoJIpFMsaQMPs4ebYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\eredi\\OneDrive\\Asztali gép\\GKNB_projektmunka\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "F:\\SZE\\Saját\\5.félév\\Projektmunka II\\webshop\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\markc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\markc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
+    "C:\\Users\\markc\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512"
+  ],
   "logs": []
 }
