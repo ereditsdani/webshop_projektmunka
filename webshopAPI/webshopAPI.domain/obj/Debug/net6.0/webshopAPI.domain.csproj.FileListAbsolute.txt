@@ -1,0 +1,12 @@
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.csproj.AssemblyReference.cache
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.AssemblyInfoInputs.cache
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.AssemblyInfo.cs
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.csproj.CoreCompileInputs.cache
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\bin\Debug\net6.0\webshopAPI.domain.deps.json
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\bin\Debug\net6.0\webshopAPI.domain.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\bin\Debug\net6.0\ref\webshopAPI.domain.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\bin\Debug\net6.0\webshopAPI.domain.pdb
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\ref\webshopAPI.domain.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI.domain\obj\Debug\net6.0\webshopAPI.domain.pdb
