@@ -1,0 +1,36 @@
+/* Style the order container */
+.order-container {
+    text-align: center; /* Center the content horizontally */
+  }
+  
+  /* Style the "Order" button */
+  .order-button {
+    background-color: blue; /* Change the button background color to blue */
+    color: white; /* Set the text color to white */
+    font-size: 24px; /* Increase the font size to make it bigger */
+    padding: 10px 20px; /* Adjust padding to increase button size */
+    border: none; /* Remove the button border */
+    border-radius: 5px; /* Add border-radius for a rounded look */
+    cursor: pointer; /* Change the cursor to a pointer when hovering */
+  }
+  
+  /* Style the cart items container */
+  .cart-items-container {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    margin-top: 20px; /* Add some space between the button and cart items */
+  }
+  
+  /* Style individual cart items */
+  .cart-item {
+    font-size: 18px; /* Increase font size for cart items */
+    margin-bottom: 10px; /* Add space between cart items */
+  }
+  
+  /* Style the cart total */
+  .cart-total {
+    font-size: 24px; /* Increase font size for the total */
+    font-weight: bold; /* Make the total text bold */
+  }
+  
