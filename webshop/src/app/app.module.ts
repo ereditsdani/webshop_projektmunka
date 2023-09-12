@@ -12,11 +12,26 @@ import { ProductsComponent } from './business/components/products/products.compo
 import { CarouselModule } from 'primeng/carousel';
 import { MainSliderComponent } from './business/components/componentParts/main-slider/main-slider.component';
 import { Tag, TagModule } from 'primeng/tag';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, HomeComponent, ProductsComponent, MainSliderComponent],
-  imports: [BrowserModule, AppRoutingModule, AutoCompleteModule, CarouselModule, TagModule, ButtonModule],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    HomeComponent,
+    ProductsComponent,
+    MainSliderComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AutoCompleteModule,
+    CarouselModule,
+    TagModule,
+    ButtonModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
