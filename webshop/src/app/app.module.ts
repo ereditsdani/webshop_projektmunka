@@ -8,10 +8,11 @@ import { HeaderComponent } from './ui/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { HomeComponent } from './business/components/home/home.component';
+import { ProductsComponent } from './business/components/products/products.component';
 
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, HomeComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, HomeComponent, ProductsComponent],
   imports: [BrowserModule, AppRoutingModule, AutoCompleteModule],
   providers: [],
   bootstrap: [AppComponent],
