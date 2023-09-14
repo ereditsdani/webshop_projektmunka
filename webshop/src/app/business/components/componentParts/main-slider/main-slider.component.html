@@ -25,17 +25,21 @@
 </div>
 
 <div class="order-container">
-    <button type="button" class="order-button" (click)="toggleCartVisibility()">
-      <i class="pi pi-shopping-cart"></i> Order
-    </button>
-    <div *ngIf="cartVisible" class="cart-items-container">
-      <div *ngFor="let item of cartItems" class="cart-item">
-        {{ item.orderAmount }} x {{ item.name }} - {{ item.orderAmount * item.price }} Ft
-      </div>
-      <div class="cart-total">
-        Total Price: {{ getTotalPrice() }} Ft
-      </div>
+  <button type="button" class="order-button" (click)="toggleCartVisibility()">
+    <i class="pi pi-shopping-cart"></i> Rendelés
+  </button>
+  <button type="button" class="clear-cart-button" (click)="clearCart()">Kosár ürítése</button>
+  <div *ngIf="cartVisible" class="cart-items-container">
+    <div *ngFor="let item of cartItems" class="cart-item">
+      {{ item.orderAmount }} x {{ item.name }} - {{ item.orderAmount * item.price }} Ft
+    </div>
+    <!-- Conditionally display the "Total Price" section if cartItems is not empty -->
+    <div class="cart-total" *ngIf="cartItems.length > 0">
+      Total Price: {{ getTotalPrice() }} Ft
     </div>
   </div>
+</div>
+
+
   
   <!-- https://primeng.org/carousel -->

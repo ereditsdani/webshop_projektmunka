@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-main-slider',
   templateUrl: './main-slider.component.html',
   styleUrls: ['./main-slider.component.scss']
 })
-export class MainSliderComponent {
+export class MainSliderComponent implements OnInit {
+  
+
+
   products: { name: string; image: string; price: number; inventoryStatus: number; orderAmount: number }[] = [
     {
       name: "HDMI kábel 10 méteres",
@@ -69,6 +73,44 @@ export class MainSliderComponent {
     }
   ];
 
+
+  cartItems: { name: string; price: number; orderAmount: number }[] = [];
+
+  hasLocalStorageData: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  ngOnInit() {
+    // Load cart items from local storage when the component is initialized
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      this.cartItems = JSON.parse(storedCartItems);
+  
+      // Update the orderAmount for each product based on cartItems
+      this.products.forEach(product => {
+        const cartItem = this.cartItems.find(item => item.name === product.name);
+        if (cartItem) {
+          product.orderAmount = cartItem.orderAmount;
+        }
+      });
+  
+      console.log('Cart Items Loaded:', this.cartItems);
+  
+      // Set cartVisible to true when there is data in localStorage
+      this.cartVisible = true;
+  
+      // Trigger change detection to update the view
+      this.cdr.detectChanges();
+    } else {
+      console.log('No Cart Items Found in localStorage');
+    }
+  }
+  
+
+
+  
+
+  
   totalQuantity: number = 0;
 
   updateTotalQuantity() {
@@ -79,29 +121,77 @@ export class MainSliderComponent {
 
   toggleCartVisibility() {
     this.cartVisible = !this.cartVisible;
+
+    // When toggling cart visibility, update cart items and save to local storage
+    this.updateCartItems();
   }
 
+
   selectedProduct: any = null; // Initialize selectedProduct as null
-  cartItems: any[] = []; // Array to store cart items
+  
 
   addToCart(product: any) {
     if (product.orderAmount < product.inventoryStatus) {
       if (this.selectedProduct !== product) {
-        this.selectedProduct = product; // Set selectedProduct to the current product
+        this.selectedProduct = product;
       }
-      product.orderAmount++; // Increment the orderAmount of the current product
+      product.orderAmount++;
+  
+      // Check if the product is already in the cart
+      const existingItem = this.cartItems.find(item => item.name === product.name);
+  
+      if (existingItem) {
+        existingItem.orderAmount++; // Increment the orderAmount if already in cart
+      } else {
+        // Add a new item if not in cart
+        this.cartItems.push({
+          name: product.name,
+          price: product.price,
+          orderAmount: 1
+        });
+      }
+  
+      // Update cart items and save to local storage
       this.updateCartItems();
-      this.cartVisible = true; // Show the cart when adding an item
+      this.cartVisible = true;
     }
   }
-
+  
   removeFromCart(product: any) {
     if (product.orderAmount > 0) {
       product.orderAmount--;
-      this.selectedProduct = product; // Set selectedProduct when removing
-      this.updateCartItems();
+  
+      // Find the matching item in cartItems
+      const existingItem = this.cartItems.find(item => item.name === product.name);
+  
+      if (existingItem) {
+        existingItem.orderAmount--; // Decrement the orderAmount
+        if (existingItem.orderAmount === 0) {
+          // Remove the item if orderAmount is 0
+          const index = this.cartItems.indexOf(existingItem);
+          this.cartItems.splice(index, 1);
+        }
+  
+        // Update cart items and save to local storage
+        this.updateCartItems();
+      }
     }
   }
+  
+  clearCart() {
+    // Reset orderAmount for each product and clear the cartItems array
+    this.products.forEach(product => {
+      product.orderAmount = 0;
+    });
+    this.cartItems = [];
+  
+    // Save the updated cart items to localStorage
+    this.updateCartItems();
+  
+    // Hide the cart
+    this.cartVisible = false;
+  }
+  
 
   resetSelectedProduct() {
     this.selectedProduct = null; // Reset selectedProduct
@@ -109,8 +199,19 @@ export class MainSliderComponent {
   }
 
   updateCartItems() {
-    this.cartItems = this.products.filter(product => product.orderAmount > 0);
+    // Filter products with non-zero orderAmount to update cartItems
+    this.cartItems = this.products
+      .filter(product => product.orderAmount > 0)
+      .map(product => ({
+        name: product.name,
+        price: product.price,
+        orderAmount: product.orderAmount
+      }));
+  
+    // Save the cart items to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
+  
 
   getTotalPrice() {
     return this.cartItems.reduce((total, item) => total + item.orderAmount * item.price, 0);

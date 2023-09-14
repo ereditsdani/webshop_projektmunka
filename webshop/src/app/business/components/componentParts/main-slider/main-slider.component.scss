@@ -5,7 +5,17 @@
   
   /* Style the "Order" button */
   .order-button {
-    background-color: blue; /* Change the button background color to blue */
+    background-color: #00aae3; /* Change the button background color to blue */
+    color: white; /* Set the text color to white */
+    font-size: 24px; /* Increase the font size to make it bigger */
+    padding: 10px 20px; /* Adjust padding to increase button size */
+    border: none; /* Remove the button border */
+    border-radius: 5px; /* Add border-radius for a rounded look */
+    cursor: pointer; /* Change the cursor to a pointer when hovering */
+  }
+
+  .clear-cart-button{
+    background-color: #00aae3; /* Change the button background color to blue */
     color: white; /* Set the text color to white */
     font-size: 24px; /* Increase the font size to make it bigger */
     padding: 10px 20px; /* Adjust padding to increase button size */
