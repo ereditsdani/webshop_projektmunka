@@ -94,7 +94,7 @@ export class MainSliderComponent implements OnInit {
         }
       });
   
-      console.log('Cart Items Loaded:', this.cartItems);
+     
   
       // Set cartVisible to true when there is data in localStorage
       this.cartVisible = true;
@@ -157,27 +157,40 @@ export class MainSliderComponent implements OnInit {
     }
   }
   
-  removeFromCart(product: any) {
-    if (product.orderAmount > 0) {
-      product.orderAmount--;
+  removeFromCart(item: any) {
+    if (item.orderAmount > 0) {
+     
+      item.orderAmount--;
+      
   
-      // Find the matching item in cartItems
-      const existingItem = this.cartItems.find(item => item.name === product.name);
-  
-      if (existingItem) {
-        existingItem.orderAmount--; // Decrement the orderAmount
-        if (existingItem.orderAmount === 0) {
-          // Remove the item if orderAmount is 0
-          const index = this.cartItems.indexOf(existingItem);
-          this.cartItems.splice(index, 1);
-        }
-  
-        // Update cart items and save to local storage
-        this.updateCartItems();
+      // If the orderAmount becomes 0, remove the item from the cart
+      if (item.orderAmount === 0) {
+        this.cartItems = this.cartItems.filter(cartItem => cartItem.name !== item.name);
+      } else {
+        // Update the cart item with the new order amount
+        this.cartItems = this.cartItems.map(cartItem => {
+          if (cartItem.name === item.name) {
+            return { ...cartItem, orderAmount: item.orderAmount };
+          }
+          return cartItem;
+        });
       }
+  
+      // Update cart items and save to local storage
+      this.updateCartItemsArray(this.cartItems);
     }
   }
+
+
+  updateCartItemsArray(updatedCartItems: any[]) {
+    this.cartItems = updatedCartItems;
   
+    // Save the cart items to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    
+  }
+
+
   clearCart() {
     // Reset orderAmount for each product and clear the cartItems array
     this.products.forEach(product => {
@@ -210,6 +223,7 @@ export class MainSliderComponent implements OnInit {
   
     // Save the cart items to localStorage
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    
   }
   
 
