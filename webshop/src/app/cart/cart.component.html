@@ -1,0 +1,14 @@
+<div class="cart-container">
+    <div class="cart-items">
+      <h2>Kosár</h2>
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <span>{{ item.orderAmount }} x {{ item.name }} - {{ item.orderAmount * item.price }} Ft</span>
+        <button (click)="removeOneFromCart(item)">Remove</button>
+      </div>
+    </div>
+  
+    <div class="cart-total">
+      <h2>Összesen</h2>
+      <p>{{ getTotalPrice() }} Ft</p>
+    </div>
+  </div>

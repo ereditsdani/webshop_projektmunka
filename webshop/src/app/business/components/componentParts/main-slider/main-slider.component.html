@@ -1,49 +1,28 @@
-
-
 <div class="card">
-    <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false"
-        [responsiveOptions]="responsiveOptions">
-        <ng-template let-product pTemplate="item">
-            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                <div class="mb-3">
-                    <img src="{{ product.image }}" [alt]="product.name" class="w-6 shadow-2"
-                        style="max-width: 300px; max-height: 200px;" />
-                </div>
-                <div>
-                    <h4 class="mb-1">{{ product.name }}</h4>
-                    <h6 class="mt-0 mb-3">{{ product.price + ' Ft' }}</h6>
-                    <h6 class="mt-0 mb-3">{{ product.inventoryStatus + ' Darab elérhető' }}</h6>
+  <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false"
+      [responsiveOptions]="responsiveOptions">
+      <ng-template let-product pTemplate="item">
+          <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+              <div class="mb-3">
+                  <img src="{{ product.image }}" [alt]="product.name" class="w-6 shadow-2"
+                      style="max-width: 300px; max-height: 200px;" />
+              </div>
+              <div>
+                  <h4 class="mb-1">{{ product.name }}</h4>
+                  <h6 class="mt-0 mb-3">{{ product.price + ' Ft' }}</h6>
+                  <h6 class="mt-0 mb-3">{{ product.inventoryStatus + ' Darab elérhető' }}</h6>
 
-                    <!-- Move these buttons outside of the loop -->
-                    <button type="button" class="action-button" (click)="addToCart(product)"><img src="assets/slider/cart.png" alt="kosar_gomb"width="50"/></button>
-                    
-                    
-                </div>
-            </div>
-        </ng-template>
-    </p-carousel>
-
-    <div class="order-container">
-      <button type="button" class="order-button" (click)="toggleCartVisibility()">
-        <i class="pi pi-shopping-cart"></i> Rendelés
-      </button>
-      <button type="button" class="clear-cart-button" (click)="clearCart()">Kosár ürítése</button>
-      <div *ngIf="cartVisible" class="cart-items-container">
-        <div *ngFor="let item of cartItems" class="cart-item">
-          {{ item.orderAmount }} x {{ item.name }} - {{ item.orderAmount * item.price }} Ft
-          <button type="button" class="remove-item-button" (click)="removeFromCart(item)">-</button>
-        </div>
-        
-        <!-- Conditionally display the "Total Price" section if cartItems is not empty -->
-        <div class="cart-total" *ngIf="cartItems.length > 0">
-          Total Price: {{ getTotalPrice() }} Ft
-        </div>
-      </div>
-    </div>
-    
+                  <!-- Move these buttons outside of the loop -->
+                  <button type="button" class="action-button" (click)="addToCart(product)">
+                    <img src="assets/slider/cart.png" alt="kosar_gomb" width="50" />
+                  </button>
+                  
+              </div>
+              
+          </div>
+      </ng-template>
+  </p-carousel>
+  <p-messages [(value)]="messages" class="custom-messages" [@fadeIn]></p-messages>
 </div>
 
 
-
-  
-  <!-- https://primeng.org/carousel -->
