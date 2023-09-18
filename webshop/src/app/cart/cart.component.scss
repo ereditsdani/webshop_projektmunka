@@ -1,0 +1,35 @@
+.cart-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .cart-items {
+    flex: 2;
+    margin-right: 20px;
+  }
+  
+  .cart-item {
+    margin-bottom: 10px;
+  }
+  
+  .cart-total {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .cart-total h2 {
+    margin-bottom: 10px;
+  }
+  
+  .cart-total p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  

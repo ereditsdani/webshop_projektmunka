@@ -80,6 +80,15 @@
             >Regisztráció</a
           >
         </li>
+        <li>
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center"
+            [routerLink]="['/cart']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Kosár ({{ cartItemCount  }})</a
+          >
+        </li>
       </ul>
     </div>
   </div>
