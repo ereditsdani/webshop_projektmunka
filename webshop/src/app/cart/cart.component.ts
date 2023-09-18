@@ -27,4 +27,16 @@ export class CartComponent implements OnInit {
   getTotalPrice(): number {
     return this.cartService.getTotalPrice();
   }
+
+  clearCart() {
+    this.cartService.clearCart();
+  }
+
+  orderItems() {
+    //Ezt még ki kell fejteni, egyelőre csak kitörli a dolgokat kattintásra
+    this.clearCart();
+
+    // Optionally, you can display a success message or navigate to a confirmation page
+  }
+
 }

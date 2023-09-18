@@ -74,4 +74,6 @@ export class CartService {
       this.cartItemsSubject.next(JSON.parse(storedCartItems));
     }
   }
+
+  
 }
