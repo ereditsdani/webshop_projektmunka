@@ -12,12 +12,13 @@ import { ProductsComponent } from './business/components/products/products.compo
 import { CarouselModule } from 'primeng/carousel';
 import { MainSliderComponent } from './business/components/componentParts/main-slider/main-slider.component';
 import { Tag, TagModule } from 'primeng/tag';
-import { CartService } from './ui/services/cart.service';
+import { ToastModule } from 'primeng/toast';
 import { CartComponent } from './cart/cart.component';
 import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
-
+import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
+import { CartService } from './business/services/cart.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     MessagesModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastModule,
+    TableModule,
   ],
   providers: [CartService, MessageService],
   bootstrap: [AppComponent],

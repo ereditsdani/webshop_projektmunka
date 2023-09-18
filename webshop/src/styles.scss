@@ -1,6 +1,62 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-
+// @import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
 body {
   margin: 0 !important;
+}
+
+.cartButton {
+  .p-button.p-button-icon-only {
+    border-radius: 50px !important;
+    background-color: #d5e5f6 !important;
+    color: black;
+    border: 1px solid lightblue;
+  }
+  .p-button.p-button-icon-only:hover {
+    background-color: lightblue !important;
+    border: 1px solid lightblue !important;
+  }
+}
+
+.clearCartButton {
+  .p-button {
+    background-color: lightcoral;
+    border: 1px solid red;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .p-button:hover {
+    background-color: red !important;
+    border: 1px solid red !important;
+  }
+}
+
+.placeOrderButton {
+  .p-button {
+    background-color: rgb(98, 197, 98);
+    border: 1px solid green;
+    margin-top: 10px;
+  }
+  .p-button:hover {
+    background-color: green !important;
+    border: 1px solid green;
+  }
+}
+
+.removeCartItem {
+  .p-button {
+    border-radius: 50px;
+    background-color: lightcoral;
+    border: 1px solid red;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  .p-button:hover {
+    background-color: red !important;
+    border: 1px solid red !important;
+  }
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: #d5e5f6 !important;
 }
