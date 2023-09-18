@@ -5,10 +5,15 @@
         <span>{{ item.orderAmount }} x {{ item.name }} - {{ item.orderAmount * item.price }} Ft</span>
         <button (click)="removeOneFromCart(item)">Remove</button>
       </div>
+      <button type="button" (click)="clearCart()">Kosár ürítése</button>
+      <button type="button" (click)="orderItems()">Rendelés leadása</button>
+
     </div>
   
     <div class="cart-total">
       <h2>Összesen</h2>
       <p>{{ getTotalPrice() }} Ft</p>
     </div>
+    
   </div>
+  

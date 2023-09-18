@@ -1,0 +1,61 @@
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+ 
+  
+  /* Style the main content */
+  .content {
+    flex: 1; /* Allow the main content to grow and take up remaining space */
+    background-color: #d5e5f6;
+  }
+  
+  body,
+  html {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .container {
+    display: flex;
+    width: 95%;
+    margin: 0 auto; /* Center the container */
+    padding: 0 2.5%; /* Adjust padding to maintain the margin */
+  
+    /* Optional: Add box-sizing to include padding and border in element's total width and height */
+    box-sizing: border-box;
+  }
+  
+  .left-box {
+    flex: 2;
+    background-color: white; /* Adjust as needed */
+    padding: 20px;
+  }
+  
+  .right-boxes {
+    padding: 20px;
+    flex: 1;
+    width: auto; /* Adjust width to auto */
+    display: flex;
+    flex-direction: column;
+    max-width: 50%; /* Limit the maximum width */
+  }
+  
+  .small-box {
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    overflow: auto; /* Enable scrolling if content overflows */
+    max-width: 100%; /* Limit the maximum width */
+  }
+  
+  .right-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555; /* Adjust as needed */
+  }
+  
