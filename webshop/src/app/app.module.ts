@@ -17,14 +17,9 @@ import { CartComponent } from './cart/cart.component';
 import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 
-
-
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, HomeComponent, ProductsComponent, MainSliderComponent, CartComponent],
-  imports: [BrowserModule, AppRoutingModule, AutoCompleteModule, CarouselModule, TagModule, ButtonModule, MessagesModule],
-  providers: [CartService, MessageService],
   declarations: [
     AppComponent,
     FooterComponent,
@@ -32,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ProductsComponent,
     MainSliderComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +36,11 @@ import { HttpClientModule } from '@angular/common/http';
     CarouselModule,
     TagModule,
     ButtonModule,
+    MessagesModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [CartService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
