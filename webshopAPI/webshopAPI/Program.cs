@@ -18,8 +18,10 @@ services.AddDbContext<WebshopContext>(ServiceLifetime.Transient, ServiceLifetime
 
 services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
 services.AddTransient<IProductCategoryService, ProductCategoryService>();
-
-
+services.AddTransient<IVendorRepository, VendorRepsoitory>();
+services.AddTransient<IVendorService, VendorService>();
+services.AddTransient<IProductRepository, ProductRepository>();
+services.AddTransient<IProductService, ProductService>();
 
 // Set up Corse Policy
 var MyAllowSpecificOrigins = "CorsPolicy";

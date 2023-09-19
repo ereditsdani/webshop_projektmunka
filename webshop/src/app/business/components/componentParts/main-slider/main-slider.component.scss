@@ -1,68 +1,72 @@
 /* Style the order container */
-.whole{
+.whole {
   margin: 1%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .order-container {
   display: flex;
   justify-content: center; /* Center the buttons horizontally */
-  align-items: center; 
+  align-items: center;
   padding: 50px;
 }
-  
-  /* Style the "Order" button */
-  .order-button {
-    background-color: #00aae3;
+
+/* Style the "Order" button */
+.order-button {
+  background-color: #00aae3;
   color: white;
   font-size: 24px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 20px; 
-    
-  }
+  margin: 0 20px;
+}
 
-  .clear-cart-button{
-    background-color: #00aae3;
-    color: white;
-    font-size: 24px;
-    padding: 10px 20px;
-    border: none;
-    
-    cursor: pointer;
-    margin: 0 20px; 
-  }
-  
-  /* Style the cart items container */
-  .cart-items-container {
-    display: flex;
-    flex-direction: column; /* Arrange items vertically */
-    align-items: center; /* Center items horizontally */
-    margin-top: 20px; /* Add some space between the button and cart items */
-  }
-  
-  /* Style individual cart items */
-  .cart-item {
-    font-size: 18px; /* Increase font size for cart items */
-    margin-bottom: 10px; /* Add space between cart items */
-  }
-  
-  /* Style the cart total */
-  .cart-total {
-    font-size: 24px; /* Increase font size for the total */
-    font-weight: bold; /* Make the total text bold */
-  }
+.clear-cart-button {
+  background-color: #00aae3;
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  border: none;
 
-  .custom-messages {
-    position: fixed;
-    bottom: 20px; /* Adjust the distance from the bottom as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 75%;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+/* Style the cart items container */
+.cart-items-container {
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+  margin-top: 20px; /* Add some space between the button and cart items */
+}
+
+/* Style individual cart items */
+.cart-item {
+  font-size: 18px; /* Increase font size for cart items */
+  margin-bottom: 10px; /* Add space between cart items */
+}
+
+/* Style the cart total */
+.cart-total {
+  font-size: 24px; /* Increase font size for the total */
+  font-weight: bold; /* Make the total text bold */
+}
+
+.custom-messages {
+  position: fixed;
+  bottom: 20px; /* Adjust the distance from the bottom as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  to {
+    opacity: 1;
   }
+}

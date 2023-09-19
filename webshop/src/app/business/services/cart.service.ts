@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  private cartItemsSubject = new BehaviorSubject<{ name: string; price: number; orderAmount: number }[]>([]);
+  private cartItemsSubject = new BehaviorSubject<
+    { name: string; price: number; orderAmount: number }[]
+  >([]);
   cartUpdated$ = this.cartItemsSubject.asObservable();
 
   private readonly localStorageKey = 'cartItems';
@@ -20,7 +22,9 @@ export class CartService {
 
   addToCart(item: { name: string; price: number }): void {
     const currentCartItems = this.cartItemsSubject.value;
-    const existingItem = currentCartItems.find(cartItem => cartItem.name === item.name);
+    const existingItem = currentCartItems.find(
+      (cartItem) => cartItem.name === item.name
+    );
 
     if (existingItem) {
       existingItem.orderAmount++;
@@ -28,7 +32,7 @@ export class CartService {
       currentCartItems.push({
         name: item.name,
         price: item.price,
-        orderAmount: 1
+        orderAmount: 1,
       });
     }
 
@@ -37,13 +41,17 @@ export class CartService {
 
   removeFromCart(item: { name: string; price: number }): void {
     const currentCartItems = this.cartItemsSubject.value;
-    const existingItem = currentCartItems.find(cartItem => cartItem.name === item.name);
+    const existingItem = currentCartItems.find(
+      (cartItem) => cartItem.name === item.name
+    );
 
     if (existingItem) {
       existingItem.orderAmount--;
 
       if (existingItem.orderAmount === 0) {
-        this.updateCartAndLocalStorage(currentCartItems.filter(cartItem => cartItem.name !== item.name));
+        this.updateCartAndLocalStorage(
+          currentCartItems.filter((cartItem) => cartItem.name !== item.name)
+        );
       } else {
         this.updateCartAndLocalStorage(currentCartItems);
       }
@@ -54,16 +62,23 @@ export class CartService {
     this.updateCartAndLocalStorage([]);
   }
 
-  updateCartItemsArray(updatedCartItems: { name: string; price: number; orderAmount: number }[]): void {
+  updateCartItemsArray(
+    updatedCartItems: { name: string; price: number; orderAmount: number }[]
+  ): void {
     this.updateCartAndLocalStorage(updatedCartItems);
   }
 
   getTotalPrice(): number {
     const currentCartItems = this.cartItemsSubject.value;
-    return currentCartItems.reduce((total, item) => total + item.orderAmount * item.price, 0);
+    return currentCartItems.reduce(
+      (total, item) => total + item.orderAmount * item.price,
+      0
+    );
   }
 
-  private updateCartAndLocalStorage(cartItems: { name: string; price: number; orderAmount: number }[]): void {
+  private updateCartAndLocalStorage(
+    cartItems: { name: string; price: number; orderAmount: number }[]
+  ): void {
     this.cartItemsSubject.next(cartItems);
     localStorage.setItem(this.localStorageKey, JSON.stringify(cartItems));
   }
@@ -74,6 +89,4 @@ export class CartService {
       this.cartItemsSubject.next(JSON.parse(storedCartItems));
     }
   }
-
-  
 }
