@@ -14,13 +14,11 @@
 
         public int Quantity { get; set; }
 
-        public ProductCategoryDTO ProductzCategory { get; set; }
+        public ProductCategoryDTO ProductCategory { get; set; }
 
         public VendorDTO ProductVendor { get; set; }
 
         public bool Trending { get; set; }
-
-        public bool Active { get; set; }
 
         public string ImageUrl { get; set; }
 

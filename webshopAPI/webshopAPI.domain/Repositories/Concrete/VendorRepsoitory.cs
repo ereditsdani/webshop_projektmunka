@@ -8,34 +8,35 @@ using webshopAPI.domain.Repositories.Abstract;
 
 namespace webshopAPI.domain.Repositories.Concrete
 {
-    public class ProductCategoryRepository : IProductCategoryRepository
+    public class VendorRepsoitory : IVendorRepository
     {
         private readonly WebshopContext _webshopContext;
 
-        public ProductCategoryRepository(WebshopContext webshopContext)
+        public VendorRepsoitory(WebshopContext webshopContext)
         {
             _webshopContext = webshopContext;
         }
-        public List<ProductCategory> GetProductCategories()
+
+        public Vendor GetVendorById(int vendorId)
         {
             try
             {
-                List<ProductCategory> productCategories = _webshopContext.ProductCategory.ToList();
-
-                return productCategories;
+                Vendor vendor = _webshopContext.Vendor.Where(x => x.Id == vendorId).FirstOrDefault();
+                return vendor;
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
 
-        public ProductCategory GetProductCategoryById(int productCategoryId)
+        public List<Vendor> GetVendors()
         {
             try
             {
-                ProductCategory productCategory = _webshopContext.ProductCategory.Where(x => x.Id == productCategoryId).FirstOrDefault();
-                return productCategory;
+                List<Vendor> vendors = _webshopContext.Vendor.ToList();
+                return vendors;
             }
             catch (Exception)
             {

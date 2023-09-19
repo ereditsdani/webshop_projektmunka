@@ -11,11 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Abstract\" />
-    <Folder Include="Services\Concrete\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\webshopAPI.domain\webshopAPI.domain.csproj" />
   </ItemGroup>
 

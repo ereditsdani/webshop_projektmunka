@@ -7,9 +7,8 @@ using webshopAPI.domain.Entities;
 
 namespace webshopAPI.domain.Repositories.Abstract
 {
-    public interface IProductCategoryRepository
+    public interface IProductRepository
     {
-        public List<ProductCategory> GetProductCategories();
-        public ProductCategory GetProductCategoryById(int productCategoryId);
+        public List<Product> GetProducts();
     }
 }
