@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductCategoryService } from 'src/app/business/services/product-category.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  suggestions: any[] = [];
+  constructor(private productCategoriesServcie: ProductCategoryService) {}
 
-  search(event: any) {}
+  ngOnInit() {
+    this.productCategoriesServcie.getProductCategoriesFromdb();
+  }
 }

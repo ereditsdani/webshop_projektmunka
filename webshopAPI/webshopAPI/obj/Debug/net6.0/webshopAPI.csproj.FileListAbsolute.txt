@@ -132,3 +132,4 @@ C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webs
 C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\scopedcss\bundle\webshopAPI.styles.css
 C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\webshopAPI.csproj.CopyComplete
 C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\webshopAPI.genruntimeconfig.cache
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\webshopAPI.MvcApplicationPartsAssemblyInfo.cs

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eredi\\OneDrive\\Asztali gép\\GKNB_projektmunka\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj": {}
+    "F:\\SZE\\Saját\\5.félév\\Projektmunka II\\webshop\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eredi\\OneDrive\\Asztali gép\\GKNB_projektmunka\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj": {
+    "F:\\SZE\\Saját\\5.félév\\Projektmunka II\\webshop\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eredi\\OneDrive\\Asztali gép\\GKNB_projektmunka\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj",
+        "projectUniqueName": "F:\\SZE\\Saját\\5.félév\\Projektmunka II\\webshop\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj",
         "projectName": "webshopAPI.domain",
-        "projectPath": "C:\\Users\\eredi\\OneDrive\\Asztali gép\\GKNB_projektmunka\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj",
-        "packagesPath": "C:\\Users\\eredi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eredi\\OneDrive\\Asztali gép\\GKNB_projektmunka\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\obj\\",
+        "projectPath": "F:\\SZE\\Saját\\5.félév\\Projektmunka II\\webshop\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\webshopAPI.domain.csproj",
+        "packagesPath": "C:\\Users\\markc\\.nuget\\packages\\",
+        "outputPath": "F:\\SZE\\Saját\\5.félév\\Projektmunka II\\webshop\\webshop_projektmunka\\webshopAPI\\webshopAPI.domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "F:\\Visual Studio\\Visual Studio Shared Installation path\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\eredi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\markc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -55,16 +55,31 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.308\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
