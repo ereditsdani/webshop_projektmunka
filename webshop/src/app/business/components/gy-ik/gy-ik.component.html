@@ -1,0 +1,9 @@
+<div class="outline">
+    <p-accordion [multiple]="true" [activeIndex]="[0]">
+      <p-accordionTab *ngFor="let faqItem of FaQ" [header]="faqItem.question">
+        <p>
+          <span [innerHTML]="faqItem.answer"></span>
+        </p>
+      </p-accordionTab>
+    </p-accordion>
+  </div>

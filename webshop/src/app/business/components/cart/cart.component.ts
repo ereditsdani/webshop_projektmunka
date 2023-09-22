@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../business/services/cart.service';
+import { CartService } from '../../services/cart.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
+  providers: [MessageService]
 })
 export class CartComponent implements OnInit {
   cartItems: { name: string; price: number; orderAmount: number }[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private messageService: MessageService) {}
 
+  
   ngOnInit() {
     this.cartService.cartUpdated$.subscribe((cartItems) => {
       this.cartItems = cartItems;
@@ -38,4 +41,7 @@ export class CartComponent implements OnInit {
 
     // Optionally, you can display a success message or navigate to a confirmation page
   }
+
+
+ 
 }

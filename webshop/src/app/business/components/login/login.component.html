@@ -1,0 +1,21 @@
+<div class="login-container">
+    <div class="login-form">
+        <h2>Belépés</h2>
+      
+        <form (ngSubmit)="onSubmit()" class="formclass">
+          <div class="p-field">
+            <label for="username">Felhasználónév</label>
+            <input pInputText id="username" type="text" [(ngModel)]="username" name="username" />
+          </div>
+      
+          <div class="p-field">
+            <label for="password">Jelszó</label>
+            <input pInputText id="password" type="password" [(ngModel)]="password" name="password" />
+          </div>
+      
+          <button pButton type="submit" label="Belépés" class="p-button-success"></button>
+        </form>
+      </div>
+      
+  </div>
+  

@@ -1,0 +1,21 @@
+<div class="container">
+<div class="outline">
+
+    <h1>Hírlevélre való feliratkozás</h1>
+  
+    <span class="p-float-label">
+      <input pInputText type="text" class="p-inputtext-lg" [(ngModel)]="valueName" />
+      <label htmlFor="name">Név</label>
+ </span>
+ <span class="p-float-label">
+      <input pInputText type="text" class="p-inputtext-lg" [(ngModel)]="valueMail" />
+      <label htmlFor="mail">E-mail cím</label>
+    </span>
+  
+
+    <p-toast></p-toast>
+    <button type="button" pButton pRipple (click)="showSuccess()" label="Feliratkozás" class="p-button-success"></button>
+
+  </div>
+</div>
+  

@@ -30,6 +30,8 @@ export class MainSliderComponent implements OnInit {
     price: number;
     inventoryStatus: number;
     orderAmount: number;
+    vendor: string;
+    description: string;
   }[] = [
     {
       name: 'HDMI kábel 10 méteres',
@@ -38,6 +40,8 @@ export class MainSliderComponent implements OnInit {
       price: 1400,
       inventoryStatus: 10,
       orderAmount: 0,
+      vendor: "LittleChineseeVendor",
+      description: "Egy jó minőségű HDMI kábel"
     },
     {
       name: 'HP Pavilion Gaming Mouse',
@@ -46,6 +50,8 @@ export class MainSliderComponent implements OnInit {
       price: 6000,
       inventoryStatus: 20,
       orderAmount: 0,
+      vendor: "HP",
+      description: "Szuper gamer egér lolozáshoz (törtehető)"
     },
     {
       name: 'Bosch Mosogép',
@@ -54,6 +60,8 @@ export class MainSliderComponent implements OnInit {
       price: 60000,
       inventoryStatus: 5,
       orderAmount: 0,
+      vendor: "Bosch",
+      description: "Rázkódós mosogép a család számára"
     },
     {
       name: 'Dyson hajszárító',
@@ -61,6 +69,8 @@ export class MainSliderComponent implements OnInit {
       price: 30000,
       inventoryStatus: 3,
       orderAmount: 0,
+      vendor: "Dyson",
+      description: "Minden hajat megszárító hajszárító"
     },
     {
       name: 'Samsung mikró',
@@ -68,6 +78,8 @@ export class MainSliderComponent implements OnInit {
       price: 20000,
       inventoryStatus: 300,
       orderAmount: 0,
+      vendor: "Samsung",
+      description: "Lehallgat a mikró"
     },
     {
       name: 'Dell Laptop',
@@ -75,6 +87,8 @@ export class MainSliderComponent implements OnInit {
       price: 123000,
       inventoryStatus: 50,
       orderAmount: 0,
+      vendor: "Dell",
+      description: "Remek laptop egyetemre"
     },
   ];
 
