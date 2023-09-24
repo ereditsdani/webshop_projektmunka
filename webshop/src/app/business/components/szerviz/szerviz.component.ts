@@ -1,40 +1,39 @@
 import { Component } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SzervizService } from '../../services/szerviz.service';
 
 @Component({
   selector: 'app-szerviz',
   templateUrl: './szerviz.component.html',
   styleUrls: ['./szerviz.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class SzervizComponent {
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private szervizService: SzervizService
+  ) {}
 
-  valueMail: string | undefined;
-  valueOrder: string | undefined;
-  valueIssue: string | undefined;
+  szerviz = new FormGroup({
+    emailAddress: new FormControl('', Validators.required),
+    orderNumber: new FormControl('', Validators.required),
+    errorDescription: new FormControl('', Validators.required),
+  });
 
   submitForm() {
-    // Create an object with the form data
-    const formData = {
-      email: this.valueMail,
-      order: this.valueOrder,
-      issue: this.valueIssue
-    };
-    
+    console.log(this.szerviz.value);
+    this.szervizService.saveSzervizForm(this.szerviz.value);
+    this.szerviz.reset();
+    this.showSuccess();
+  }
+
+  showSuccess() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Siker!',
+      detail: 'Üzenet sikeresen elküldve!',
+    });
+  }
 }
-showSuccess() {
-  this.messageService.add({ severity: 'success', summary: 'Siker!', detail: 'Üzenet sikeresen elküldve!' });
-}
-
-resetForm() {
-  this.valueMail = undefined;
-  this.valueOrder = undefined;
-  this.valueIssue = undefined;
-}
-
-
-}
-
-

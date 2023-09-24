@@ -1,24 +1,44 @@
 <div class="outline">
-
+  <form [formGroup]="szerviz" (ngSubmit)="submitForm()">
     <h1>Szervíz igénylő</h1>
-  
+
     <span class="p-float-label">
-      <input pInputText type="text" class="p-inputtext-lg" [(ngModel)]="valueMail" />
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-lg"
+        formControlName="emailAddress"
+      />
       <label htmlFor="mail">Email cím</label>
     </span>
-  
+
     <span class="p-float-label">
-      <input pInputText type="text" class="p-inputtext-lg" [(ngModel)]="valueOrder" />
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-lg"
+        formControlName="orderNumber"
+      />
       <label htmlFor="order">Rendelés azonosító</label>
     </span>
-  
+
     <span class="p-float-label">
-      <textarea rows="10" cols="60" pInputTextarea [(ngModel)]="valueIssue"></textarea>
+      <textarea
+        rows="10"
+        cols="60"
+        pInputTextarea
+        max="200"
+        formControlName="errorDescription"
+      ></textarea>
       <label for="add-summary">Hiba leírása</label>
     </span>
 
-    <p-toast></p-toast>
-    <button type="button" pButton pRipple (click)="showSuccess()" label="Küldés" class="p-button-success"></button>
-
-  </div>
-  
+    <p-button
+      [label]="'Küldés'"
+      [class]="'accept'"
+      [type]="'submit'"
+      [disabled]="szerviz.invalid"
+    ></p-button>
+  </form>
+</div>
+<p-toast></p-toast>

@@ -29,8 +29,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { GyIKComponent } from './business/components/gy-ik/gy-ik.component';
 import { LoginComponent } from './business/components/login/login.component';
 import { RegisterComponent } from './business/components/register/register.component';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,7 @@ import { RegisterComponent } from './business/components/register/register.compo
     NewsComponent,
     GyIKComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +62,9 @@ import { RegisterComponent } from './business/components/register/register.compo
     FormsModule,
     InputTextModule,
     InputTextareaModule,
-    AccordionModule
+    AccordionModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [CartService, MessageService],
   bootstrap: [AppComponent],
