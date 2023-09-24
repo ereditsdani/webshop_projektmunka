@@ -13,12 +13,24 @@ import { CarouselModule } from 'primeng/carousel';
 import { MainSliderComponent } from './business/components/componentParts/main-slider/main-slider.component';
 import { Tag, TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './business/components/cart/cart.component';
 import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { CartService } from './business/services/cart.service';
+import { SzervizComponent } from './business/components/szerviz/szerviz.component';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { NewsLetterComponent } from './business/components/componentParts/news-letter/news-letter.component';
+import { NewsComponent } from './business/components/news/news.component';
+import { AccordionModule } from 'primeng/accordion';
+import { GyIKComponent } from './business/components/gy-ik/gy-ik.component';
+import { LoginComponent } from './business/components/login/login.component';
+import { RegisterComponent } from './business/components/register/register.component';
+
+
 
 @NgModule({
   declarations: [
@@ -29,6 +41,12 @@ import { CartService } from './business/services/cart.service';
     ProductsComponent,
     MainSliderComponent,
     CartComponent,
+    SzervizComponent,
+    NewsLetterComponent,
+    NewsComponent,
+    GyIKComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +60,10 @@ import { CartService } from './business/services/cart.service';
     BrowserAnimationsModule,
     ToastModule,
     TableModule,
+    FormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    AccordionModule
   ],
   providers: [CartService, MessageService],
   bootstrap: [AppComponent],

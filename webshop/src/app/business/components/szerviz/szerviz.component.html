@@ -1,0 +1,24 @@
+<div class="outline">
+
+    <h1>Szervíz igénylő</h1>
+  
+    <span class="p-float-label">
+      <input pInputText type="text" class="p-inputtext-lg" [(ngModel)]="valueMail" />
+      <label htmlFor="mail">Email cím</label>
+    </span>
+  
+    <span class="p-float-label">
+      <input pInputText type="text" class="p-inputtext-lg" [(ngModel)]="valueOrder" />
+      <label htmlFor="order">Rendelés azonosító</label>
+    </span>
+  
+    <span class="p-float-label">
+      <textarea rows="10" cols="60" pInputTextarea [(ngModel)]="valueIssue"></textarea>
+      <label for="add-summary">Hiba leírása</label>
+    </span>
+
+    <p-toast></p-toast>
+    <button type="button" pButton pRipple (click)="showSuccess()" label="Küldés" class="p-button-success"></button>
+
+  </div>
+  
