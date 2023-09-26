@@ -133,3 +133,7 @@ C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webs
 C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\webshopAPI.csproj.CopyComplete
 C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\webshopAPI.genruntimeconfig.cache
 C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\obj\Debug\net6.0\webshopAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\eredi\OneDrive\Asztali gép\GKNB_projektmunka\webshop_projektmunka\webshopAPI\webshopAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

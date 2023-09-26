@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.Data.SqlClient;
 using webshopAPI.domain.Entities;
 using webshopAPI.domain.Repositories.Abstract;
 using webshopAPI.domain.Repositories.Concrete;
@@ -22,6 +23,10 @@ services.AddTransient<IVendorRepository, VendorRepsoitory>();
 services.AddTransient<IVendorService, VendorService>();
 services.AddTransient<IProductRepository, ProductRepository>();
 services.AddTransient<IProductService, ProductService>();
+services.AddTransient<ISzervizService, SzervizService>();
+services.AddTransient<ISzervizRepository, SzervizRepository>();
+services.AddTransient<IFaqService, FaqService>();
+services.AddTransient<IFaqRepository, FaqRepository>();
 
 // Set up Corse Policy
 var MyAllowSpecificOrigins = "CorsPolicy";
@@ -44,20 +49,18 @@ services.Configure<IISServerOptions>(options =>
 });
 
 ////Prevent JSON parse infinite loop
-//services.AddMvc().AddNewtonsoftJson(options =>
-//                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+services.AddMvc().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 services.AddMvc().AddJsonOptions(jsopts =>
 { jsopts.JsonSerializerOptions.MaxDepth = 4; }
 );
-
 // Add controllers
 services.AddControllers();
 
 
 // Add authentication
 services.AddAuthentication(IISDefaults.AuthenticationScheme);
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

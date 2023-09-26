@@ -17,13 +17,14 @@ export class SzervizComponent {
   ) {}
 
   szerviz = new FormGroup({
-    emailAddress: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
     orderNumber: new FormControl('', Validators.required),
     errorDescription: new FormControl('', Validators.required),
   });
 
   submitForm() {
     console.log(this.szerviz.value);
+    //todo: itt majd mielőtt elküldöm lecsekkolom van-e ilyen ordernumber
     this.szervizService.saveSzervizForm(this.szerviz.value);
     this.szerviz.reset();
     this.showSuccess();
