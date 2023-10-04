@@ -32,7 +32,7 @@ namespace webshopAPI.domain.Repositories.Concrete
 
         public void saveOrderItems(List<Product> products)
         {
-            Order lastOrder = _webshopContext.Order.OrderBy(x => x.Timestamp).FirstOrDefault();
+            Order lastOrder = _webshopContext.Order.OrderByDescending(x => x.Timestamp).FirstOrDefault();
             OrderItems orderItem;
             foreach (var item in products)
             {

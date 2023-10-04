@@ -74,4 +74,12 @@ export class SingleProductComponent {
   triggerChangeDetection() {
     this.cdr.detectChanges();
   }
+
+  getDiscountPrice(price: number, discount: any): number {
+    return price - (discount / 100) * price;
+  }
+
+  getNettoProductDiscountPrice(price: number, discount: any) {
+    return (price - (discount / 100) * price) / 1.27;
+  }
 }

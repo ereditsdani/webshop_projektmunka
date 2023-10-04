@@ -7,15 +7,47 @@
       <h4>{{ product.productName }}</h4>
       <p-chip label="{{ product.productCategory?.categoryName }}"></p-chip>
       <p class="description">{{ product.productDescription }}</p>
-      <p class="price">
-        Ár: <b>{{ product.price | number : "1.0-0" }} Ft</b>
-      </p>
-      <p>
-        <small
-          >Nettó ár:
-          {{ getNettoProductPrice(product.price) | number : "1.0-0" }} Ft</small
-        >
-      </p>
+      <ng-container *ngIf="product.discount == 0">
+        <p class="price">
+          Ár: <b>{{ product.price | number : "1.0-0" }} Ft</b>
+        </p>
+        <p>
+          <small
+            >Nettó ár:
+            {{ getNettoProductPrice(product.price) | number : "1.0-0" }}
+            Ft</small
+          >
+        </p>
+      </ng-container>
+      <ng-container *ngIf="product.discount != 0">
+        <p class="discountCorssedPrice">
+          <p-chip label="-{{ product?.discount }}%" class="discount"></p-chip>
+          <span class="marginDiscount"
+            >Ár: <b>{{ product.price | number : "1.0-0" }} Ft</b></span
+          >
+        </p>
+        <p class="price">
+          Akciós ár:
+          <b
+            >{{
+              getDiscountPrice(product.price, product.discount)
+                | number : "1.0-0"
+            }}
+            Ft</b
+          >
+        </p>
+        <p>
+          <small
+            >Akciós nettó ár:
+            {{
+              getNettoProductDiscountPrice(product.price, product.discount)
+                | number : "1.0-0"
+            }}
+            Ft</small
+          >
+        </p>
+      </ng-container>
+
       <p-button
         icon="pi pi-cart-plus"
         (click)="addToCart(product)"

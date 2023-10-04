@@ -29,7 +29,7 @@ namespace webshopAPI.Services.Concrete
                 seged.ImageUrl = item.ImageUrl;
                 seged.CategoryId = item.ProductCategory.Id;
                 seged.VendorId = item.ProductVendor.Id;
-                seged.Quantity = item.Quantity;
+                seged.Quantity = item.OrderAmount;
                 seged.OurChoice = item.OurChoice;
                 seged.Active = true;
                 returnProducts.Add(seged);
