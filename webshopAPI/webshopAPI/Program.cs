@@ -27,6 +27,8 @@ services.AddTransient<ISzervizService, SzervizService>();
 services.AddTransient<ISzervizRepository, SzervizRepository>();
 services.AddTransient<IFaqService, FaqService>();
 services.AddTransient<IFaqRepository, FaqRepository>();
+services.AddTransient<IOrderService, OrderService>();
+services.AddTransient<IOrderRepository, OrderRepository>();
 
 // Set up Corse Policy
 var MyAllowSpecificOrigins = "CorsPolicy";

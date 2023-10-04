@@ -30,6 +30,8 @@ import { GyIKComponent } from './business/components/gy-ik/gy-ik.component';
 import { LoginComponent } from './business/components/login/login.component';
 import { RegisterComponent } from './business/components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SingleProductComponent } from './business/components/single-product/single-product.component';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     GyIKComponent,
     LoginComponent,
     RegisterComponent,
+    SingleProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AccordionModule,
     FormsModule,
     ReactiveFormsModule,
+    ChipModule,
   ],
   providers: [CartService, MessageService],
   bootstrap: [AppComponent],

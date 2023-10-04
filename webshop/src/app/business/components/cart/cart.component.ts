@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { MessageService } from 'primeng/api';
+import { OrderService } from '../../services/order.service';
+import { Product } from '../../Models/Product';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class CartComponent implements OnInit {
-  cartItems: { name: string; price: number; orderAmount: number }[] = [];
+  cartItems: Product[] = [];
 
-  constructor(private cartService: CartService, private messageService: MessageService) {}
+  constructor(
+    private cartService: CartService,
+    private messageService: MessageService,
+    private orderService: OrderService
+  ) {}
 
-  
   ngOnInit() {
     this.cartService.cartUpdated$.subscribe((cartItems) => {
       this.cartItems = cartItems;
@@ -21,10 +26,7 @@ export class CartComponent implements OnInit {
   }
 
   removeOneFromCart(item: any) {
-    this.cartService.removeFromCart({
-      name: item.name,
-      price: item.price,
-    });
+    this.cartService.removeFromCart(item);
   }
 
   getTotalPrice(): number {
@@ -36,12 +38,12 @@ export class CartComponent implements OnInit {
   }
 
   orderItems() {
-    //Ezt még ki kell fejteni, egyelőre csak kitörli a dolgokat kattintásra
+    this.orderService.saveOrder(this.cartItems);
     this.clearCart();
-
-    // Optionally, you can display a success message or navigate to a confirmation page
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Info',
+      detail: 'Sikeres megrendelés!',
+    });
   }
-
-
- 
 }

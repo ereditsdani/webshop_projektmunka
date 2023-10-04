@@ -60,3 +60,10 @@ body {
 .p-datatable .p-datatable-thead > tr > th {
   background-color: #d5e5f6 !important;
 }
+
+.addToCartButton {
+  .p-button:hover {
+    background-color: #d5e5f6 !important;
+    color: blue !important;
+  }
+}

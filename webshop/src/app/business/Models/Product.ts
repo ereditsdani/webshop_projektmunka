@@ -13,4 +13,5 @@ export class Product {
   trending: boolean = false;
   imageUrl: string = '';
   ourChoice: boolean = false;
+  orderAmount: number = 0;
 }

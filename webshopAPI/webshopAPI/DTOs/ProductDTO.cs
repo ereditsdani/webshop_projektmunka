@@ -23,5 +23,6 @@
         public string ImageUrl { get; set; }
 
         public bool OurChoice { get; set; }
+        public int OrderAmount { get; set; }
     }
 }

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Product } from '../Models/Product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cartItemsSubject = new BehaviorSubject<
-    { name: string; price: number; orderAmount: number }[]
-  >([]);
+  private cartItemsSubject = new BehaviorSubject<Product[]>([]);
   cartUpdated$ = this.cartItemsSubject.asObservable();
 
   private readonly localStorageKey = 'cartItems';
@@ -16,33 +15,29 @@ export class CartService {
     this.loadCartItemsFromLocalStorage();
   }
 
-  getCartItems(): { name: string; price: number; orderAmount: number }[] {
+  getCartItems(): Product[] {
     return this.cartItemsSubject.value;
   }
 
-  addToCart(item: { name: string; price: number }): void {
+  addToCart(item: Product): void {
     const currentCartItems = this.cartItemsSubject.value;
     const existingItem = currentCartItems.find(
-      (cartItem) => cartItem.name === item.name
+      (cartItem) => cartItem.productName === item.productName
     );
 
     if (existingItem) {
       existingItem.orderAmount++;
     } else {
-      currentCartItems.push({
-        name: item.name,
-        price: item.price,
-        orderAmount: 1,
-      });
+      currentCartItems.push(item);
     }
 
     this.updateCartAndLocalStorage(currentCartItems);
   }
 
-  removeFromCart(item: { name: string; price: number }): void {
+  removeFromCart(item: Product): void {
     const currentCartItems = this.cartItemsSubject.value;
     const existingItem = currentCartItems.find(
-      (cartItem) => cartItem.name === item.name
+      (cartItem) => cartItem.productName === item.productName
     );
 
     if (existingItem) {
@@ -50,7 +45,9 @@ export class CartService {
 
       if (existingItem.orderAmount === 0) {
         this.updateCartAndLocalStorage(
-          currentCartItems.filter((cartItem) => cartItem.name !== item.name)
+          currentCartItems.filter(
+            (cartItem) => cartItem.productName !== item.productName
+          )
         );
       } else {
         this.updateCartAndLocalStorage(currentCartItems);
@@ -62,9 +59,7 @@ export class CartService {
     this.updateCartAndLocalStorage([]);
   }
 
-  updateCartItemsArray(
-    updatedCartItems: { name: string; price: number; orderAmount: number }[]
-  ): void {
+  updateCartItemsArray(updatedCartItems: Product[]): void {
     this.updateCartAndLocalStorage(updatedCartItems);
   }
 
@@ -76,9 +71,7 @@ export class CartService {
     );
   }
 
-  private updateCartAndLocalStorage(
-    cartItems: { name: string; price: number; orderAmount: number }[]
-  ): void {
+  private updateCartAndLocalStorage(cartItems: Product[]): void {
     this.cartItemsSubject.next(cartItems);
     localStorage.setItem(this.localStorageKey, JSON.stringify(cartItems));
   }

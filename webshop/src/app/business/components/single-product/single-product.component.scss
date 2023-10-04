@@ -1,0 +1,40 @@
+.container {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  background-color: white;
+  margin-top: 25px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  height: 60vh;
+}
+
+.left,
+.right {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.description {
+  margin-top: 20px;
+  text-align: justify;
+}
+
+small {
+  margin: 0px;
+  padding: 0px;
+}
+
+.price {
+  margin-bottom: 0px !important;
+}
+
+img {
+  width: 80%;
+  height: 80%;
+}

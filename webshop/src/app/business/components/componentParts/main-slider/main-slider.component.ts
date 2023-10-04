@@ -8,6 +8,10 @@ import {
 import { Message, MessageService } from 'primeng/api';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CartService } from 'src/app/business/services/cart.service';
+import { ProductService } from 'src/app/business/services/product.service';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/business/Models/Product';
+import { OrderService } from 'src/app/business/services/order.service';
 
 @Component({
   selector: 'app-main-slider',
@@ -24,74 +28,6 @@ import { CartService } from 'src/app/business/services/cart.service';
   ],
 })
 export class MainSliderComponent implements OnInit {
-  products: {
-    name: string;
-    image: string;
-    price: number;
-    inventoryStatus: number;
-    orderAmount: number;
-    vendor: string;
-    description: string;
-  }[] = [
-    {
-      name: 'HDMI kábel 10 méteres',
-      image:
-        'https://www.beststore.hu/cache/1pcg59epntcswxfqqsv9qpsgk759unz64-63a0b91b387cc-53cd-1671477531.png',
-      price: 1400,
-      inventoryStatus: 10,
-      orderAmount: 0,
-      vendor: "LittleChineseeVendor",
-      description: "Egy jó minőségű HDMI kábel"
-    },
-    {
-      name: 'HP Pavilion Gaming Mouse',
-      image:
-        'https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06172626.png',
-      price: 6000,
-      inventoryStatus: 20,
-      orderAmount: 0,
-      vendor: "HP",
-      description: "Szuper gamer egér lolozáshoz (törtehető)"
-    },
-    {
-      name: 'Bosch Mosogép',
-      image:
-        'https://s13emagst.akamaized.net/products/34679/34678375/images/res_07d3b46d5e9ac0a684774f5ce5f8c9df.jpg',
-      price: 60000,
-      inventoryStatus: 5,
-      orderAmount: 0,
-      vendor: "Bosch",
-      description: "Rázkódós mosogép a család számára"
-    },
-    {
-      name: 'Dyson hajszárító',
-      image: 'https://p1.akcdn.net/full/869587467.dyson-supersonic-hd07.jpg',
-      price: 30000,
-      inventoryStatus: 3,
-      orderAmount: 0,
-      vendor: "Dyson",
-      description: "Minden hajat megszárító hajszárító"
-    },
-    {
-      name: 'Samsung mikró',
-      image: 'https://p1.akcdn.net/full/407846796.samsung-mg23k3515as.jpg',
-      price: 20000,
-      inventoryStatus: 300,
-      orderAmount: 0,
-      vendor: "Samsung",
-      description: "Lehallgat a mikró"
-    },
-    {
-      name: 'Dell Laptop',
-      image: 'https://notebookstore.hu/img/o/12995-k75k8.jpg',
-      price: 123000,
-      inventoryStatus: 50,
-      orderAmount: 0,
-      vendor: "Dell",
-      description: "Remek laptop egyetemre"
-    },
-  ];
-
   responsiveOptions = [
     {
       breakpoint: '1199px',
@@ -113,17 +49,23 @@ export class MainSliderComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private cartService: CartService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public productService: ProductService
   ) {}
 
   cartItems: { name: string; price: number; orderAmount: number }[] = [];
   totalQuantity: number = 0;
   cartVisible: boolean = false;
   messages: Message[] = [];
-
+  products$: Observable<Product[]> = new Observable<Product[]>();
+  products: Product[] = [];
   cartUpdated: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnInit() {
+    this.products$ = this.productService.product$;
+    this.productService.product$.subscribe((x) => {
+      this.products = x;
+    });
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       this.cartItems = JSON.parse(storedCartItems);
@@ -131,7 +73,7 @@ export class MainSliderComponent implements OnInit {
       // Update the orderAmount for each product based on cartItems
       this.products.forEach((product) => {
         const cartItem = this.cartItems.find(
-          (item) => item.name === product.name
+          (item) => item.name === product.productName
         );
         if (cartItem) {
           product.orderAmount = cartItem.orderAmount;
@@ -148,15 +90,6 @@ export class MainSliderComponent implements OnInit {
     } else {
       console.log('No Cart Items Found in localStorage');
     }
-
-    this.updateTotalQuantity();
-  }
-
-  updateTotalQuantity() {
-    this.totalQuantity = this.products.reduce(
-      (total, product) => total + product.orderAmount,
-      0
-    );
   }
 
   toggleCartVisibility() {
@@ -166,19 +99,18 @@ export class MainSliderComponent implements OnInit {
     this.updateCart();
   }
 
-  addToCart(product: any) {
-    if (product.orderAmount < product.inventoryStatus) {
+  addToCart(product: Product) {
+    if (product.orderAmount === undefined) {
+      product.orderAmount = 0;
+    }
+    if (product.orderAmount < product.quantity) {
       product.orderAmount++;
-      this.cartService.addToCart({
-        name: product.name,
-        price: product.price,
-      });
-      this.updateTotalQuantity();
+      this.cartService.addToCart(product);
 
       this.displayMessage(
         'success',
         'Hozzáadva a kosárhoz!',
-        `Hozzáadtál 1x ${product.name} elemet a kosárhoz!`
+        `Hozzáadtál 1x ${product.productName} elemet a kosárhoz!`
       );
 
       // Manually trigger change detection
@@ -189,18 +121,13 @@ export class MainSliderComponent implements OnInit {
   removeFromCart(item: any) {
     if (item.orderAmount > 0) {
       item.orderAmount--;
-      this.cartService.removeFromCart({
-        name: item.name,
-        price: item.price,
-      });
-      this.updateTotalQuantity();
+      this.cartService.removeFromCart(item);
     }
   }
 
   clearCart() {
     this.cartService.clearCart();
     this.products.forEach((product) => (product.orderAmount = 0));
-    this.updateTotalQuantity();
   }
 
   resetSelectedProduct() {
@@ -208,16 +135,11 @@ export class MainSliderComponent implements OnInit {
   }
 
   private updateCart() {
-    const updatedCartItems = this.products
-      .filter((product) => product.orderAmount > 0)
-      .map((product) => ({
-        name: product.name,
-        price: product.price,
-        orderAmount: product.orderAmount,
-      }));
+    const updatedCartItems = this.products.filter(
+      (product) => product.orderAmount > 0
+    );
 
     this.cartService.updateCartItemsArray(updatedCartItems);
-    this.updateTotalQuantity();
   }
 
   getTotalPrice() {

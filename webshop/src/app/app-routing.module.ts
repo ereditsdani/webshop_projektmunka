@@ -8,6 +8,7 @@ import { NewsComponent } from './business/components/news/news.component';
 import { GyIKComponent } from './business/components/gy-ik/gy-ik.component';
 import { LoginComponent } from './business/components/login/login.component';
 import { RegisterComponent } from './business/components/register/register.component';
+import { SingleProductComponent } from './business/components/single-product/single-product.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'gyik', component: GyIKComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'products/:id', component: SingleProductComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

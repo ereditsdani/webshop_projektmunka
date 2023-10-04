@@ -1,7 +1,7 @@
 <div class="whole">
   <div class="card">
     <p-carousel
-      [value]="products"
+      [value]="(productService.product$ | async) ?? []"
       [numVisible]="3"
       [numScroll]="3"
       [circular]="false"
@@ -12,21 +12,21 @@
           class="border-1 surface-border border-round m-2 text-center py-5 px-3"
         >
           <div class="mb-3">
-            <img
-              src="{{ product.image }}"
-              [alt]="product.name"
-              class="w-6 shadow-2"
-              style="max-width: 300px; max-height: 200px"
-            />
+            <a [routerLink]="['/products', product.id]">
+              <img
+                src="{{ product.imageUrl }}"
+                [alt]="product.name"
+                class="w-6 shadow-2"
+                style="max-width: 300px; max-height: 200px"
+            /></a>
           </div>
           <div>
-            <h4 class="mb-1">{{ product.name }}</h4>
+            <h4 class="mb-1">{{ product.productName }}</h4>
             <h6 class="mt-0 mb-3">{{ product.price + " Ft" }}</h6>
             <h6 class="mt-0 mb-3">
-              {{ product.inventoryStatus + " Darab elérhető" }}
+              {{ product.quantity + " Darab elérhető" }}
             </h6>
 
-            <!-- Move these buttons outside of the loop -->
             <p-button
               icon="pi pi-cart-plus"
               (click)="addToCart(product)"
