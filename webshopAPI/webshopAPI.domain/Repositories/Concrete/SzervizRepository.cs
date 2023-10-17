@@ -10,9 +10,39 @@ namespace webshopAPI.domain.Repositories.Concrete
 {
     public class SzervizRepository : ISzervizRepository
     {
-        public void saveScrappingForm(Service form)
+        private readonly WebshopContext _webshopContext;
+        public SzervizRepository(WebshopContext webshopContext)
         {
-            throw new NotImplementedException();
+            _webshopContext = webshopContext;
+        }
+
+        public List<Service> GetServices()
+        {
+            try
+            {
+                List<Service> services = _webshopContext.Service.Where(x => x.Solved == false).ToList();
+
+                return services;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void saveSzervizForm(Service szerviz)
+        {
+            try
+            {
+                _webshopContext.Service.Add(szerviz);
+                _webshopContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

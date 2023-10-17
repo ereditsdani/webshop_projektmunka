@@ -13,6 +13,20 @@ namespace webshopAPI.Services.Concrete
         {
             _orderRepository = orderRepository;
         }
+
+        public bool doesOrderExist(int orderId)
+        {
+            try
+            {
+                return _orderRepository.doesOrderExist(orderId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void saveOrder(List<ProductDTO> products)
         {
             List<Product> returnProducts = new();

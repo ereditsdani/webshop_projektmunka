@@ -11,5 +11,6 @@ namespace webshopAPI.domain.Repositories.Abstract
     {
         public void saveOrder(List<Product> products);
         public void saveOrderItems(List<Product> products);
+        public bool doesOrderExist(int orderId);
     }
 }

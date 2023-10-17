@@ -11,17 +11,11 @@
       />
       <label htmlFor="mail">Email cím</label>
     </span>
-
     <span class="p-float-label correctLabelPlacement">
-      <input
-        pInputText
-        type="text"
-        class="p-inputtext-lg"
-        formControlName="orderNumber"
-      />
-      <label htmlFor="order">Rendelés azonosító</label>
+      <p-inputNumber inputId="integeronly" formControlName="orderNumber">
+      </p-inputNumber>
+      <label htmlFor="number-input">Rendelés azonosító</label>
     </span>
-
     <span class="p-float-label">
       <textarea
         rows="10"

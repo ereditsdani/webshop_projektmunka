@@ -8,7 +8,7 @@ import { SzervizService } from '../../services/szerviz.service';
   selector: 'app-szerviz',
   templateUrl: './szerviz.component.html',
   styleUrls: ['./szerviz.component.scss'],
-  providers: [MessageService],
+  providers: [MessageService, SzervizService],
 })
 export class SzervizComponent {
   constructor(
@@ -18,23 +18,16 @@ export class SzervizComponent {
 
   szerviz = new FormGroup({
     email: new FormControl('', Validators.required),
-    orderNumber: new FormControl('', Validators.required),
+    orderNumber: new FormControl(null, Validators.required),
     errorDescription: new FormControl('', Validators.required),
   });
 
   submitForm() {
     console.log(this.szerviz.value);
-    //todo: itt majd mielőtt elküldöm lecsekkolom van-e ilyen ordernumber
     this.szervizService.saveSzervizForm(this.szerviz.value);
     this.szerviz.reset();
     this.showSuccess();
   }
 
-  showSuccess() {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Siker!',
-      detail: 'Üzenet sikeresen elküldve!',
-    });
-  }
+  showSuccess() {}
 }

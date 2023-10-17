@@ -1,11 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SzervizService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private messageService: MessageService,
+    private http: HttpClient
+  ) {}
 
   saveSzervizForm(form: any) {
     let options = {
@@ -24,7 +28,19 @@ export class SzervizService {
       )
       .subscribe({
         error: (error: any) => {
-          console.log(error.message);
+          console.log(error.error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Hiba!',
+            detail: error.error,
+          });
+        },
+        complete: () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Siker!',
+            detail: 'Üzenet sikeresen elküldve!',
+          });
         },
       });
   }

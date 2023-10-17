@@ -32,6 +32,7 @@ import { RegisterComponent } from './business/components/register/register.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { SingleProductComponent } from './business/components/single-product/single-product.component';
 import { ChipModule } from 'primeng/chip';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ChipModule } from 'primeng/chip';
     FormsModule,
     ReactiveFormsModule,
     ChipModule,
+    InputNumberModule,
   ],
   providers: [CartService, MessageService],
   bootstrap: [AppComponent],

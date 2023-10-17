@@ -4,6 +4,7 @@ namespace webshopAPI.Services.Abstract
 {
     public interface ISzervizService
     {
-        public void saveScrappingForm(SzervizDTO form);
+        public void saveSzervizForm(SzervizDTO form);
+        public List<SzervizDTO> getServices();
     }
 }

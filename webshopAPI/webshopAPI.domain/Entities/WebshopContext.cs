@@ -41,7 +41,7 @@ public partial class WebshopContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DANI-LAPTOP\\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Data Source=DANI-LAPTOP\\SQLEXPRESS;Initial Catalog=Webshop;Integrated Security=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -139,11 +139,10 @@ public partial class WebshopContext : DbContext
             entity.Property(e => e.Price).HasColumnName("price");
             entity.Property(e => e.ProductDescription)
                 .IsRequired()
-                .HasMaxLength(50)
                 .HasColumnName("productDescription");
             entity.Property(e => e.ProductName)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .HasColumnName("productName");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
             entity.Property(e => e.Trending).HasColumnName("trending");
@@ -224,6 +223,7 @@ public partial class WebshopContext : DbContext
                 .HasMaxLength(500)
                 .HasColumnName("errorDescription");
             entity.Property(e => e.OrderId).HasColumnName("orderId");
+            entity.Property(e => e.Solved).HasColumnName("solved");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Service)
                 .HasForeignKey(d => d.OrderId)

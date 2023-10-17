@@ -1,1 +1,33 @@
+<div class="content">
+  <p-autoComplete
+    [suggestions]="filteredProducts"
+    field="productName"
+    (completeMethod)="searchProduct($event)"
+    (onSelect)="onSelectItem($event)"
+    placeholder="Keress az elérhető termékeink közül..."
+    class="searchAutocomplete"
+  >
+    <ng-template let-product pTemplate="item">
+      <div class="content">
+        <div class="ui-helper-clearfix">
+          <div>
+            <b>{{ product.productName }}</b>
+            <p-chip
+              label="{{ product.productCategory?.categoryName }}"
+              class="chip"
+            ></p-chip>
+          </div>
+          <img
+            src="{{ product.imageUrl }}"
+            alt="Your Image"
+            height="100px"
+            width="100px"
+          />
+        </div>
+        <hr />
+      </div>
+    </ng-template>
+  </p-autoComplete>
+</div>
+
 <app-main-slider></app-main-slider>

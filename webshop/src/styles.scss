@@ -74,3 +74,17 @@ body {
     color: white;
   }
 }
+
+.searchAutocomplete {
+  .p-inputtext {
+    width: 800px;
+  }
+
+  .p-autocomplete-panel {
+    height: 800px;
+  }
+}
+
+.p-inputnumber-input {
+  width: 400px !important;
+}

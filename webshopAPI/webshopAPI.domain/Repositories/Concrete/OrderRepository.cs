@@ -16,6 +16,26 @@ namespace webshopAPI.domain.Repositories.Concrete
         {
             _webshopContext = webshopContext;
         }
+
+        public bool doesOrderExist(int orderId)
+        {
+            try
+            {
+                Order order = _webshopContext.Order.Where(x => x.Id == orderId).FirstOrDefault();
+
+                if (order != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void saveOrder(List<Product> products)
         {
             Order order = new Order();

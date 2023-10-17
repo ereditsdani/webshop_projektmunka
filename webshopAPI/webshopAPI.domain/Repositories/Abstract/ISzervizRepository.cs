@@ -9,6 +9,7 @@ namespace webshopAPI.domain.Repositories.Abstract
 {
     public interface ISzervizRepository
     {
-        public void saveScrappingForm(Service form);
+        public void saveSzervizForm(Service szerviz);
+        public List<Service> GetServices();
     }
 }
