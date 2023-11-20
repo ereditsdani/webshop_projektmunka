@@ -1,0 +1,139 @@
+<div class="card">
+  <p-table
+    #dt
+    [value]="faqs"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [(selection)]="selectedFaq"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <button
+          pButton
+          pRipple
+          label="Új GyIK felvétele"
+          icon="pi pi-plus"
+          class="p-button-success mr-2"
+          (click)="openNewFawDialog()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          label="GyIK(ek) törlése"
+          icon="pi pi-trash"
+          class="p-button-danger"
+          (click)="deleteSelectedFaq()"
+          [disabled]="!selectedFaq || !selectedFaq.length"
+        ></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th>Kérdés címe</th>
+        <th>Kérdés</th>
+        <th>Válasz</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gyik>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="gyik"></p-tableCheckbox>
+        </td>
+        <td>{{ gyik.questionTitle }}</td>
+        <td>{{ gyik.question }}</td>
+        <td>{{ gyik.answer }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        Összesen {{ faqs ? faqs.length : 0 }} db GyIK található.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+<p-dialog
+  [(visible)]="faqDialog"
+  [style]="{ width: '450px' }"
+  header="Új termék felvétele"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <form [formGroup]="faqForm">
+      <label for="name">Kérdés címe</label>
+      <input
+        type="text"
+        pInputText
+        id="name"
+        placeholder="Kérdés címe..."
+        formControlName="questionTitle"
+      />
+      <!-- <small class="p-error" *ngIf="submitted && !product.name"
+          >Name is required.</small
+        > -->
+
+      <div class="field">
+        <label for="name">Kérdés</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          placeholder="Kérdés..."
+          formControlName="question"
+        ></textarea>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+          >Name is required.</small
+        > -->
+      </div>
+      <div class="field">
+        <label for="name">Válasz</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          placeholder="Válasz..."
+          formControlName="answer"
+        ></textarea>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+          >Name is required.</small
+        > -->
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Vissza"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="hideNewFaqDialog()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Mentés"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="addNewFaq()"
+      [disabled]="faqForm.invalid"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<p-toast></p-toast>

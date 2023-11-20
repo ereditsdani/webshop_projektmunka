@@ -16,6 +16,26 @@ namespace webshopAPI.domain.Repositories.Concrete
         {
             _webshopContext = webshopContext;
         }
+
+        public void DeleteFaqs(List<Faq> faqs)
+        {
+            try
+            {
+                Faq deleteFaq;
+                foreach (var item in faqs)
+                {
+                    deleteFaq = _webshopContext.Faq.Where(x => x.Id == item.Id).FirstOrDefault();
+                    _webshopContext.Faq.Remove(deleteFaq);
+                }
+                _webshopContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<Faq> GetFaqs()
         {
             try
@@ -25,6 +45,20 @@ namespace webshopAPI.domain.Repositories.Concrete
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public void SaveNewFaq(Faq faq)
+        {
+            try
+            {
+                _webshopContext.Faq.Add(faq);
+                _webshopContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

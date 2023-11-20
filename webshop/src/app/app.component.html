@@ -1,6 +1,9 @@
 <div class="flexbox">
-  <div class="header">
+  <div class="header" *ngIf="!isAdminRoute">
     <app-header></app-header>
+  </div>
+  <div class="header" *ngIf="isAdminRoute">
+    <app-admin-header></app-admin-header>
   </div>
   <div class="content">
     <router-outlet></router-outlet>

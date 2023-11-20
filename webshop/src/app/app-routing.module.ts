@@ -9,6 +9,14 @@ import { GyIKComponent } from './business/components/gy-ik/gy-ik.component';
 import { LoginComponent } from './business/components/login/login.component';
 import { RegisterComponent } from './business/components/register/register.component';
 import { SingleProductComponent } from './business/components/single-product/single-product.component';
+import { FinalizeOrderComponent } from './business/components/finalize-order/finalize-order.component';
+import { AdminHomeComponent } from './business/admin_components/admin-home/admin-home.component';
+import { AdminPromotionMailComponent } from './business/admin_components/admin-promotion-mail/admin-promotion-mail.component';
+import { AdminServiceComponent } from './business/admin_components/admin-service/admin-service.component';
+import { ManageFaqComponent } from './business/admin_components/manage-faq/manage-faq.component';
+import { ManageOrdersComponent } from './business/admin_components/manage-orders/manage-orders.component';
+import { ManageProductsComponent } from './business/admin_components/manage-products/manage-products.component';
+import { ManageUsersComponent } from './business/admin_components/manage-users/manage-users.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,6 +27,14 @@ const routes: Routes = [
   { path: 'gyik', component: GyIKComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'finalizeorder', component: FinalizeOrderComponent },
+  { path: 'admin/home', component: AdminHomeComponent },
+  { path: 'admin/managePromotionMail', component: AdminPromotionMailComponent },
+  { path: 'admin/manageService', component: AdminServiceComponent },
+  { path: 'admin/manageFaq', component: ManageFaqComponent },
+  { path: 'admin/manageOrders', component: ManageOrdersComponent },
+  { path: 'admin/manageProducts', component: ManageProductsComponent },
+  { path: 'admin/manageUsers', component: ManageUsersComponent },
   { path: 'products/:id', component: SingleProductComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

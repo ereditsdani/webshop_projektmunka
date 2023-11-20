@@ -1,6 +1,6 @@
 <div class="content">
   <p-autoComplete
-    [suggestions]="filteredProducts"
+    [suggestions]="filteredProductsSuggestions"
     field="productName"
     (completeMethod)="searchProduct($event)"
     (onSelect)="onSelectItem($event)"
@@ -8,15 +8,39 @@
     class="searchAutocomplete"
   >
     <ng-template let-product pTemplate="item">
-      <div class="content">
-        <div class="ui-helper-clearfix">
-          <div>
-            <b>{{ product.productName }}</b>
+      <div class="ui-helper">
+        <div class="product-details">
+          <b>{{ product.productName }}</b>
+          <p-chip
+            label="{{ product.productCategory?.categoryName }}"
+            class="chip"
+          ></p-chip>
+        </div>
+        <div class="price">
+          <ng-container *ngIf="product.discount == 0">
+            <span class="normalPrice"
+              >{{ product.price | number : "1.0-0" }} Ft</span
+            ></ng-container
+          >
+          <ng-container *ngIf="product.discount != 0">
+            <span class="discountCorssedPrice"
+              >{{ product.price | number : "1.0-0" }} Ft</span
+            >
+
             <p-chip
-              label="{{ product.productCategory?.categoryName }}"
-              class="chip"
+              label="-{{ product?.discount }}%"
+              class="discount chip"
             ></p-chip>
-          </div>
+            <b
+              >{{
+                getDiscountPrice(product.price, product.discount)
+                  | number : "1.0-0"
+              }}
+              Ft</b
+            >
+          </ng-container>
+        </div>
+        <div class="image">
           <img
             src="{{ product.imageUrl }}"
             alt="Your Image"
@@ -29,5 +53,128 @@
     </ng-template>
   </p-autoComplete>
 </div>
+<div class="filters">
+  <span class="dropdownFilter">
+    <p-button
+      label="Visszaállítás"
+      class="resetFilterButton"
+      (onClick)="resetFilter()"
+    ></p-button
+  ></span>
+  <span class="dropdownFilter">
+    <p-dropdown
+      [options]="productCategories"
+      optionLabel="categoryName"
+      placeholder="Válassz kategóriát"
+      (onChange)="filterCategory($event)"
+    ></p-dropdown>
+  </span>
+  <span class="dropdownFilter">
+    <p-dropdown
+      [options]="vendors"
+      optionLabel="vendorName"
+      placeholder="Válassz forgalmazót"
+      (onChange)="filterVendor($event)"
+    ></p-dropdown
+  ></span>
+  <span class="dropdownFilter">
+    <p-dropdown
+      [options]="actionOptions"
+      placeholder="Akciós termék"
+      (onChange)="filterSale($event)"
+    ></p-dropdown
+  ></span>
+  <span class="dropdownFilter">
+    <p-dropdown
+      [options]="actionOptions"
+      placeholder="Általunk ajánlott"
+      (onChange)="filterOurChoice($event)"
+    ></p-dropdown
+  ></span>
+  <span class="dropdownFilter">
+    <p-inputNumber
+      inputId="integeronly"
+      placeholder="Minimum ár"
+      class="filterNumber"
+      [(ngModel)]="minPrice"
+      (onInput)="filterPrice()"
+      [min]="0"
+      [showButtons]="true"
+      [step]="10000"
+      mode="currency"
+      currency="HUF"
+    ></p-inputNumber>
+  </span>
+  <span class="dropdownFilter">
+    <p-inputNumber
+      inputId="integeronly"
+      placeholder="Maximum ár"
+      class="filterNumber"
+      [(ngModel)]="maxPrice"
+      (onInput)="filterPrice()"
+      [min]="0"
+      [showButtons]="true"
+      [step]="10000"
+      mode="currency"
+      currency="HUF"
+    ></p-inputNumber>
+  </span>
+  <br />
+</div>
 
-<app-main-slider></app-main-slider>
+<div class="products-container">
+  <div class="product-card" *ngFor="let product of filteredProducts">
+    <p-card>
+      <div (click)="onSelectMeshItem(product.id)">
+        <ng-container *ngIf="product.productName">
+          <div class="card-header" [pTooltip]="product.productName">
+            {{ product.productName }}
+          </div>
+        </ng-container>
+        <div class="card-content">
+          <p-chip
+            label="{{ product.productCategory?.categoryName }}"
+            class="meshChip"
+          ></p-chip>
+          <br />
+          <div class="image-container">
+            <img class="meshImage" src="{{ product.imageUrl }}" /><br />
+          </div>
+          <div class="price">
+            <ng-container *ngIf="product.discount == 0">
+              <span class="normalPrice"
+                >{{ product.price | number : "1.0-0" }} Ft</span
+              >
+            </ng-container>
+            <ng-container *ngIf="product.discount != 0">
+              <span class="discountCorssedPrice"
+                >{{ product.price | number : "1.0-0" }} Ft</span
+              >
+
+              <p-chip
+                label="-{{ product?.discount }}%"
+                class="discount chip"
+              ></p-chip>
+              <b
+                >{{
+                  getDiscountPrice(product.price, product.discount)
+                    | number : "1.0-0"
+                }}
+                Ft</b
+              >
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <p-button
+          icon="pi pi-cart-plus"
+          (click)="addToCart(product)"
+          class="cartButton"
+        ></p-button>
+      </div>
+    </p-card>
+  </div>
+</div>
+<p-toast></p-toast>

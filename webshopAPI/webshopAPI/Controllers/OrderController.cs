@@ -17,6 +17,18 @@ namespace webshopAPI.Controllers
             _orderService = orderService;
         }
 
+        [HttpGet]
+        public List<OrderDTO> GetOrders()
+        {
+            try
+            {
+                return _orderService.getOrders();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         [HttpPost]
         public void SaveOrder([FromForm] string orderJson)
         {

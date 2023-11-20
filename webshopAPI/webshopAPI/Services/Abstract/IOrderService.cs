@@ -6,5 +6,6 @@ namespace webshopAPI.Services.Abstract
     {
         public void saveOrder(List<ProductDTO> products);
         public bool doesOrderExist(int orderId);
+        public List<OrderDTO> getOrders();
     }
 }

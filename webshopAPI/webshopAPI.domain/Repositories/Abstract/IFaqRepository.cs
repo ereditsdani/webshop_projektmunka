@@ -10,5 +10,7 @@ namespace webshopAPI.domain.Repositories.Abstract
     public interface IFaqRepository
     {
         public List<Faq> GetFaqs();
+        public void SaveNewFaq(Faq faq);
+        public void DeleteFaqs(List<Faq> faqs);
     }
 }

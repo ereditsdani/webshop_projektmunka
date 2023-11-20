@@ -18,6 +18,28 @@ namespace webshopAPI.Services.Concrete
             _vendorRepository = vendorRepository;
         }
 
+        public void DeleteProducts(List<ProductDTO> products)
+        {
+            try
+            {
+                List<Product> deleteProducts = new();
+                Product seged;
+
+                foreach (var item in products)
+                {
+                    seged = new();
+                    seged.Id = item.Id;
+                    deleteProducts.Add(seged);
+                }
+                _productRepository.DeleteProduct(deleteProducts);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<ProductDTO> GetProducts()
         {
             try
@@ -58,6 +80,32 @@ namespace webshopAPI.Services.Concrete
                 }
 
                 return productDTOs;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void SaveNewProduct(ProductDTO product)
+        {
+            try
+            {
+                Product newProduct = new();
+
+                newProduct.ProductName = product.ProductName;
+                newProduct.ProductDescription = product.ProductDescription;
+                newProduct.Price = product.Price;
+                newProduct.Discount = product.Discount;
+                newProduct.Quantity = product.Quantity;
+                newProduct.CategoryId = product.ProductCategory.Id;
+                newProduct.VendorId = product.ProductVendor.Id;
+                newProduct.Trending = product.Trending;
+                newProduct.ImageUrl = product.ImageUrl;
+                newProduct.OurChoice = product.OurChoice;
+
+                _productRepository.SaveNewProduct(newProduct);
             }
             catch (Exception)
             {

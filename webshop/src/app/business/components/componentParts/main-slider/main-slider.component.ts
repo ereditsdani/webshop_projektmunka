@@ -70,7 +70,6 @@ export class MainSliderComponent implements OnInit {
     if (storedCartItems) {
       this.cartItems = JSON.parse(storedCartItems);
 
-      // Update the orderAmount for each product based on cartItems
       this.products.forEach((product) => {
         const cartItem = this.cartItems.find(
           (item) => item.name === product.productName
@@ -82,10 +81,8 @@ export class MainSliderComponent implements OnInit {
 
       console.log('Cart Items Loaded:', this.cartItems);
 
-      // Set cartVisible to true when there is data in localStorage
       this.cartVisible = true;
 
-      // Trigger change detection to update the view
       this.cdr.detectChanges();
     } else {
       console.log('No Cart Items Found in localStorage');

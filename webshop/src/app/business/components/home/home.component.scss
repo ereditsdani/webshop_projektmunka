@@ -1,60 +1,43 @@
-.flexbox {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-.content {
-  flex: 1;
-  background-color: #d5e5f6;
-}
-
-body, html {
+body,
+html {
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .container {
   display: flex;
-  width: 100%; /* Set to 100% to stretch across the screen */
+  width: 100%;
   box-sizing: border-box;
   margin-top: 2%;
-  padding: 0 2.5%; /* Adjust padding to maintain the margin */
 }
 
 .left-box {
-  flex: 1; /* Adjust flex property to make it stretch */
+  flex: 1;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  min-height: 50vh;
-  min-width: 5vh;
-  overflow: auto;
+  min-height: 40vh;
+  max-width: 60%;
+  margin-right: 20px;
 }
 
-.right-boxes {
-  flex: 1; /* Adjust flex property to make it stretch */
+.right-box {
+  flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  max-width: 50%;
-  min-height: 50vh;
+  max-width: 40%;
+  min-height: 10vh;
+  border-radius: 10px;
 }
 
 .small-box {
   background-color: white;
-  margin: 5vh;
-  padding: 10px;
-  overflow: auto;
-  max-width: 100%;
   border-radius: 10px;
-  min-height: 25vh;
+  margin-top: 10px;
+  height: 50%;
 }
 
-.right-text {
-  font-size: 18px;
-  font-weight: bold;
-  color: #555; /* Adjust as needed */
+h3 {
+  margin: 5px;
 }

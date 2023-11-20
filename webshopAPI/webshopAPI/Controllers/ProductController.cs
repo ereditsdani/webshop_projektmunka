@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using webshopAPI.DTOs;
 using webshopAPI.Services.Abstract;
 
@@ -22,6 +23,32 @@ namespace webshopAPI.Controllers
             try
             {
                 return _productService.GetProducts();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPost]
+        public void SaveNewProduct([FromForm] string productJson)
+        {
+            try
+            {
+                ProductDTO product = JsonConvert.DeserializeObject<ProductDTO>(productJson);
+                _productService.SaveNewProduct(product);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPost]
+        public void DeleteProducts([FromForm] string productJson)
+        {
+            try
+            {
+                List<ProductDTO> products = JsonConvert.DeserializeObject<List<ProductDTO>>(productJson);
+                _productService.DeleteProducts(products);
             }
             catch (Exception)
             {

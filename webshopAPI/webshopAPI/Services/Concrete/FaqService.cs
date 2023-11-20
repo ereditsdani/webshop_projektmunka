@@ -13,6 +13,29 @@ namespace webshopAPI.Services.Concrete
         {
             _faqRepository = faqRepository;
         }
+
+        public void DeleteFaqs(List<FaqDTO> faqs)
+        {
+            try
+            {
+                List<Faq> deleteFaqs = new();
+                Faq seged;
+
+                foreach (FaqDTO faq in faqs)
+                {
+                    seged = new();
+                    seged.Id = faq.Id;
+                    deleteFaqs.Add(seged);
+                }
+                _faqRepository.DeleteFaqs(deleteFaqs);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<FaqDTO> GetFaqs()
         {
             try
@@ -34,6 +57,25 @@ namespace webshopAPI.Services.Concrete
                 }
 
                 return faqDTOs;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void SaveNewFaq(FaqDTO faq)
+        {
+            try
+            {
+                Faq newFaq = new();
+
+                newFaq.Answer = faq.Answer;
+                newFaq.QuestionTitle = faq.QuestionTitle;
+                newFaq.Question = faq.Question;
+
+                _faqRepository.SaveNewFaq(newFaq);
             }
             catch (Exception)
             {

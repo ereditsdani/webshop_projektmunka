@@ -25,7 +25,7 @@ export class VendorService {
   getVendorFromDb() {
     const options = { withCredentials: true };
     this.http
-      .get<Vendor[]>('https://localhost:7054/api/Product/GetVendors', options)
+      .get<Vendor[]>('https://localhost:7054/api/Vendor/GetVendors', options)
       .subscribe({
         next: (result: Vendor[]) => {
           this.dataStore.vendors = result;

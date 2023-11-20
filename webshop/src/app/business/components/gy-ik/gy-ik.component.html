@@ -1,9 +1,12 @@
 <div class="outline">
-    <p-accordion [multiple]="true" [activeIndex]="[0]">
-      <p-accordionTab *ngFor="let faqItem of FaQ" [header]="faqItem.question">
-        <p>
-          <span [innerHTML]="faqItem.answer"></span>
-        </p>
-      </p-accordionTab>
-    </p-accordion>
-  </div>
+  <p-accordion [multiple]="true" [activeIndex]="[0]">
+    <p-accordionTab
+      *ngFor="let faqItem of faqs"
+      [header]="faqItem.questionTitle"
+    >
+      <b>Kérdés: </b> {{ faqItem.question }} <br />
+      <b>Válasz: </b>
+      {{ faqItem.answer }}
+    </p-accordionTab>
+  </p-accordion>
+</div>

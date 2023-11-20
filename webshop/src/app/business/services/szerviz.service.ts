@@ -1,15 +1,30 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Szerviz } from '../Models/Szerviz';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SzervizService {
+  public services$: Observable<Szerviz[]> = new Observable<Szerviz[]>();
+  private _services: BehaviorSubject<Szerviz[]>;
+
+  private dataStore: {
+    services: Szerviz[];
+  };
+
   constructor(
     private messageService: MessageService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.dataStore = { services: [] };
+    this._services = new BehaviorSubject([]) as unknown as BehaviorSubject<
+      Szerviz[]
+    >;
+    this.services$ = this._services.asObservable();
+  }
 
   saveSzervizForm(form: any) {
     let options = {
@@ -41,6 +56,22 @@ export class SzervizService {
             summary: 'Siker!',
             detail: 'Üzenet sikeresen elküldve!',
           });
+        },
+      });
+  }
+
+  getServicesFromDb() {
+    const options = { withCredentials: true };
+    this.http
+      .get<Szerviz[]>('https://localhost:7054/api/Szerviz/GetServices', options)
+      .subscribe({
+        next: (result: Szerviz[]) => {
+          this.dataStore.services = result;
+          this._services.next(Object.assign({}, this.dataStore).services);
+          console.log(this.services$);
+        },
+        error: (error: any) => {
+          console.log(error.message);
         },
       });
   }

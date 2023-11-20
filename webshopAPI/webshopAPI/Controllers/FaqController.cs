@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using webshopAPI.DTOs;
 using webshopAPI.Services.Abstract;
 
@@ -22,6 +23,32 @@ namespace webshopAPI.Controllers
             try
             {
                 return _faqService.GetFaqs();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPost]
+        public void SaveNewFaq([FromForm] string faqJson)
+        {
+            try
+            {
+                FaqDTO faq = JsonConvert.DeserializeObject<FaqDTO>(faqJson);
+                _faqService.SaveNewFaq(faq);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpPost]
+        public void DeleteFaqs([FromForm] string faqJson)
+        {
+            try
+            {
+                List<FaqDTO> faqs = JsonConvert.DeserializeObject<List<FaqDTO>>(faqJson);
+                _faqService.DeleteFaqs(faqs);
             }
             catch (Exception)
             {

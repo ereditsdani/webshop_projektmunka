@@ -31,6 +31,17 @@ body {
   }
 }
 
+.resetFilterButton {
+  .p-button {
+    background-color: lightcoral;
+    border: 1px solid red;
+  }
+  .p-button:hover {
+    background-color: red !important;
+    border: 1px solid red !important;
+  }
+}
+
 .placeOrderButton {
   .p-button {
     background-color: rgb(98, 197, 98);
@@ -81,10 +92,45 @@ body {
   }
 
   .p-autocomplete-panel {
-    height: 800px;
+    min-height: 600px;
   }
 }
 
 .p-inputnumber-input {
   width: 400px !important;
+}
+
+.filterNumber {
+  .p-inputnumber-input {
+    width: 12vw !important;
+  }
+}
+
+.p-card {
+  margin: 10px !important;
+  height: 380px !important;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.p-card .p-card-content {
+  padding: 0 !important;
+}
+
+.meshChip {
+  .p-chip .p-chip-text {
+    font-size: 10px;
+  }
+}
+
+.p-card .p-card-body {
+  padding: 15px;
+}
+
+.p-inputgroup input.p-inputtext {
+  width: 400px !important;
+}
+
+.p-dropdown {
+  width: 12vw;
 }

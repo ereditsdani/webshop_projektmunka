@@ -3,6 +3,7 @@ import { CartService } from '../../services/cart.service';
 import { MessageService } from 'primeng/api';
 import { OrderService } from '../../services/order.service';
 import { Product } from '../../Models/Product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private messageService: MessageService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -38,12 +40,13 @@ export class CartComponent implements OnInit {
   }
 
   orderItems() {
-    this.orderService.saveOrder(this.cartItems);
-    this.clearCart();
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Info',
-      detail: 'Sikeres megrendelés!',
-    });
+    this.router.navigate(['finalizeorder']);
+    // this.orderService.saveOrder(this.cartItems);
+    // this.clearCart();
+    // this.messageService.add({
+    //   severity: 'success',
+    //   summary: 'Info',
+    //   detail: 'Sikeres megrendelés!',
+    // });
   }
 }

@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-xl navbar-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="assets/header/main_logo.png"
+        alt="logo"
+        class="img-responsive"
+        width="100"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav mr-auto align-items-center">
+        <li class="nav-item">
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/home']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Főoldal</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/manageProducts']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Termékek kezelése</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/manageService']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Szervíz</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/managePromotionMail']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Hírlevél</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/manageFaq']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >GyIK kezelése</a
+          >
+        </li>
+
+        <li>
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/manageOrders']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Rendelések kezelése</a
+          >
+        </li>
+        <li>
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/manageUsers']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Profilok kezelése</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

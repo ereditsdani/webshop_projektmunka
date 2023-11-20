@@ -36,6 +36,32 @@ namespace webshopAPI.domain.Repositories.Concrete
             }
         }
 
+        public List<OrderItems> GetOrderItemsByOrderId(int orderId)
+        {
+            try
+            {
+                return _webshopContext.OrderItems.Where(x => x.OrderId == orderId).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Order> getOrders()
+        {
+            try
+            {
+                return _webshopContext.Order.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void saveOrder(List<Product> products)
         {
             Order order = new Order();

@@ -14,7 +14,7 @@ import { MainSliderComponent } from './business/components/componentParts/main-s
 import { Tag, TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { CartComponent } from './business/components/cart/cart.component';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +33,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SingleProductComponent } from './business/components/single-product/single-product.component';
 import { ChipModule } from 'primeng/chip';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { CardModule } from 'primeng/card';
+import { TooltipModule } from 'primeng/tooltip';
+import { FinalizeOrderComponent } from './business/components/finalize-order/finalize-order.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { DropdownModule } from 'primeng/dropdown';
+import { SliderModule } from 'primeng/slider';
+import { AdminHeaderComponent } from './ui/admin-header/admin-header.component';
+import { AdminHomeComponent } from './business/admin_components/admin-home/admin-home.component';
+import { ManageProductsComponent } from './business/admin_components/manage-products/manage-products.component';
+import { AdminServiceComponent } from './business/admin_components/admin-service/admin-service.component';
+import { AdminPromotionMailComponent } from './business/admin_components/admin-promotion-mail/admin-promotion-mail.component';
+import { ManageFaqComponent } from './business/admin_components/manage-faq/manage-faq.component';
+import { ManageOrdersComponent } from './business/admin_components/manage-orders/manage-orders.component';
+import { ManageUsersComponent } from './business/admin_components/manage-users/manage-users.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -50,6 +69,15 @@ import { InputNumberModule } from 'primeng/inputnumber';
     LoginComponent,
     RegisterComponent,
     SingleProductComponent,
+    FinalizeOrderComponent,
+    AdminHeaderComponent,
+    AdminHomeComponent,
+    ManageProductsComponent,
+    AdminServiceComponent,
+    AdminPromotionMailComponent,
+    ManageFaqComponent,
+    ManageOrdersComponent,
+    ManageUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,8 +99,18 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ReactiveFormsModule,
     ChipModule,
     InputNumberModule,
+    CardModule,
+    TooltipModule,
+    CheckboxModule,
+    RadioButtonModule,
+    SelectButtonModule,
+    DropdownModule,
+    SliderModule,
+    ConfirmDialogModule,
+    DialogModule,
+    ToolbarModule,
   ],
-  providers: [CartService, MessageService],
+  providers: [CartService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

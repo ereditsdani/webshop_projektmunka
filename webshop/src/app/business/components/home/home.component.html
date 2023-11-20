@@ -1,10 +1,44 @@
-
 <div class="container">
-    <div class="left-box"> <h1>Vásárolj, tervezz, építs</h1>
-        <p>Nálunk minden szükséges elektronikai eszközt megtalálsz, nézz körül, és csapj le az akciós ajánlatainkra!</p></div>
-    <div class="right-box">
-      <div class="small-box"> <h3>Legjobb ajánlatok-------------------<br></h3></div>
-      <div class="small-box"><h3>Akciók rád szabva</h3></div>
-    </div>
+  <div class="left-box">
+    <h1>A mi ajánlatunk</h1>
+    <p>
+      <p-carousel
+        [value]="(products$ | async) ?? []"
+        [numVisible]="2"
+        [numScroll]="2"
+        [circular]="false"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template let-product pTemplate="item">
+          <div
+            class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+          >
+            <div class="mb-3">
+              <a [routerLink]="['/products', product.id]">
+                <img
+                  src="{{ product.imageUrl }}"
+                  [alt]="product.name"
+                  class="w-6 shadow-2"
+                  style="max-width: 300px; max-height: 200px"
+              /></a>
+            </div>
+            <div>
+              <h4 class="mb-1">{{ product.productName }}</h4>
+              <h6 class="mt-0 mb-3">{{ product.price + " Ft" }}</h6>
+              <h6 class="mt-0 mb-3">
+                {{ product.quantity + " Darab elérhető" }}
+              </h6>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </p>
   </div>
+  <div class="right-box">
+    <div class="small-box">
+      <h3>Iratkozz fel hírlevelünkre!<br /></h3>
+    </div>
+    <div class="small-box"><h3>Akciók rád szabva</h3></div>
+  </div>
+</div>
 <app-main-slider></app-main-slider>
