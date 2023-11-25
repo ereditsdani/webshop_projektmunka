@@ -1,10 +1,11 @@
 import { OrderItem } from './OrderItem';
 import { Product } from './Product';
+import { User } from './User';
 
 export class Order {
   id: number = 0;
   timestamp: string = '';
-  userId: number = 0;
+  user?: User;
   paymentMethod: string = '';
   shipmentMethod: string = '';
   orderItems: OrderItem[] = [];

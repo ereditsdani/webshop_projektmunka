@@ -40,13 +40,16 @@ export class CartComponent implements OnInit {
   }
 
   orderItems() {
-    this.router.navigate(['finalizeorder']);
-    // this.orderService.saveOrder(this.cartItems);
-    // this.clearCart();
-    // this.messageService.add({
-    //   severity: 'success',
-    //   summary: 'Info',
-    //   detail: 'Sikeres megrendelés!',
-    // });
+    let isloggedIn = localStorage.getItem('isLoggedIn');
+    if (isloggedIn == 'true') {
+      this.router.navigate(['finalizeorder']);
+    } else {
+      this.router.navigate(['login']);
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Figyelmeztetés',
+        detail: 'Jelentkezz be a vásárláshoz!',
+      });
+    }
   }
 }

@@ -2,13 +2,30 @@
   [value]="orders"
   dataKey="id"
   [tableStyle]="{ 'min-width': '60rem' }"
+  [(selection)]="selectedOrders"
   [rows]="5"
   [paginator]="true"
   currentPageReportTemplate="{first} és {last} közötti elemek megjelenítése {totalRecords} adatból"
   [showCurrentPageReport]="true"
 >
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      <button
+        pButton
+        pRipple
+        label="Rendelés(ek) törlése"
+        icon="pi pi-trash"
+        class="p-button-danger"
+        (click)="deleteSelectedOrders()"
+        [disabled]="!selectedOrders || !selectedOrders.length"
+      ></button>
+    </div>
+  </ng-template>
   <ng-template pTemplate="header">
     <tr>
+      <th style="width: 4rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
       <th style="width: 5rem"></th>
       <th>Rendelés ID</th>
       <th>Felhasználó</th>
@@ -20,6 +37,9 @@
   <ng-template pTemplate="body" let-order let-expanded="expanded">
     <tr>
       <td>
+        <p-tableCheckbox [value]="order"></p-tableCheckbox>
+      </td>
+      <td>
         <button
           type="button"
           pButton
@@ -30,7 +50,7 @@
         ></button>
       </td>
       <td>#{{ order.id }}</td>
-      <td>{{ order.userId }}</td>
+      <td>{{ order.user.username }}</td>
       <td>{{ order.shipmentMethod }}</td>
       <td>{{ order.paymentMethod }}</td>
       <td>{{ order.timestamp | date : "yyyy/MM/dd hh:mm:ss" }}</td>
@@ -61,5 +81,10 @@
         </div>
       </td>
     </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      Összesen {{ orders ? orders.length : 0 }} db rendelés található.
+    </div>
   </ng-template>
 </p-table>

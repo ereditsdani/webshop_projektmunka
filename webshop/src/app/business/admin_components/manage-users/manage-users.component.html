@@ -1,1 +1,76 @@
-<p>manage-users works!</p>
+<div class="card">
+  <p-table
+    #dt
+    [value]="users"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [(selection)]="selectedUsers"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="{first} és {last} közötti elemek megjelenítése {totalRecords} adatból"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <button
+          pButton
+          pRipple
+          label="Felhasználó(k) törlése"
+          icon="pi pi-trash"
+          class="p-button-danger"
+          (click)="deleteSelectedUser()"
+          [disabled]="!selectedUsers || !selectedUsers.length"
+        ></button>
+        <button
+          pButton
+          pRipple
+          label="Felhasználó admin státusz változtatása"
+          icon="pi pi-refresh"
+          class="p-button-danger"
+          (click)="changeAdminStatus()"
+          [disabled]="!selectedUsers || !selectedUsers.length"
+        ></button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th>Felhasználónév</th>
+        <th>Email cím</th>
+        <th>Telefonszám</th>
+        <th>Irányítószám</th>
+        <th>Cím</th>
+        <th>Admin</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="user"></p-tableCheckbox>
+        </td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>{{ user.postalNumber }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.admin ? "Igen" : "Nem" }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        Összesen {{ users ? users.length : 0 }} db felhasználó található.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-toast></p-toast>

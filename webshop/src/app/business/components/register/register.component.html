@@ -1,46 +1,51 @@
 <div class="login-container">
-    <div class="login-form">
-        <h2>Regisztráció</h2>
-      
-        <form (ngSubmit)="onSubmit()" class="formclass">
-          <div class="p-field">
-            <label for="username">Felhasználónév</label>
-            <input pInputText id="username" type="text" [(ngModel)]="username" name="username" />
-          </div>
+  <div class="login-form">
+    <h2>Regisztráció</h2>
 
-          <div class="p-field">
-            <label for="username">E-mail cím</label>
-            <input pInputText id="mail" type="text" [(ngModel)]="mail" name="mail" />
-          </div>
-      
-          <div class="p-field">
-            <label for="password">Jelszó</label>
-            <input pInputText id="password" type="password" [(ngModel)]="password" name="password" />
-          </div>
-
-          <div class="p-field">
-            <label for="password">Jelszó újra</label>
-            <input pInputText id="password" type="password" [(ngModel)]="passwordRE" name="password" />
-          </div>
-
-          <div class="p-field">
-            <label for="password">Telefonszám</label>
-            <input pInputText id="password" type="password" [(ngModel)]="phone" name="phone" />
-          </div>
-
-          <div class="p-field">
-            <label for="username">Irányítószám</label>
-            <input pInputText id="mail" type="text" [(ngModel)]="postalNumber" name="postalNumber" />
-          </div>
-
-          <div class="p-field">
-            <label for="username">Lakcím</label>
-            <input pInputText id="mail" type="text" [(ngModel)]="address" name="address" />
-          </div>
-      
-          <button pButton type="submit" label="Regisztráció" class="p-button-success"></button>
-        </form>
+    <form [formGroup]="registerForm">
+      <div class="p-field">
+        <label for="username">Felhasználónév</label>
+        <input pInputText type="text" formControlName="username" />
       </div>
-      
+
+      <div class="p-field">
+        <label for="username">E-mail cím</label>
+        <input pInputText type="text" formControlName="email" />
+      </div>
+
+      <div class="p-field">
+        <label for="password">Jelszó</label>
+        <input pInputText type="password" formControlName="password" />
+      </div>
+
+      <div class="p-field">
+        <label for="password">Jelszó újra</label>
+        <input pInputText type="password" formControlName="passwordAgain" />
+      </div>
+
+      <div class="p-field">
+        <label for="password">Telefonszám</label>
+        <input pInputText formControlName="phoneNumber" />
+      </div>
+
+      <div class="p-field">
+        <label for="username">Irányítószám</label>
+        <input type="text" formControlName="postalNumber" />
+      </div>
+
+      <div class="p-field">
+        <label for="username">Lakcím</label>
+        <input pInputText type="text" formControlName="address" />
+      </div>
+
+      <p-button
+        icon="pi pi-external-link"
+        (onClick)="register()"
+        label="Regisztráció"
+        class="loginButton"
+      ></p-button>
+    </form>
   </div>
-  
+</div>
+
+<p-toast></p-toast>

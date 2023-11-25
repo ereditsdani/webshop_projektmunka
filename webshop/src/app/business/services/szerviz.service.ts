@@ -75,4 +75,31 @@ export class SzervizService {
         },
       });
   }
+
+  solveService(services: any) {
+    let options = {
+      headers: new HttpHeaders(),
+      withCredentials: true,
+      params: {},
+    };
+    const formData = new FormData();
+    formData.append('szervizJson', JSON.stringify(services));
+    console.log(formData.get('szervizJson'));
+
+    return this.http
+      .post(
+        'https://localhost:7054/api/Szerviz/solveService',
+        formData,
+        options
+      )
+      .subscribe({
+        error: (error: any) => {
+          console.log(error.message);
+        },
+        complete: () => {
+          console.log('faxa');
+          this.getServicesFromDb();
+        },
+      });
+  }
 }

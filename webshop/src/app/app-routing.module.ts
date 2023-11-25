@@ -17,6 +17,7 @@ import { ManageFaqComponent } from './business/admin_components/manage-faq/manag
 import { ManageOrdersComponent } from './business/admin_components/manage-orders/manage-orders.component';
 import { ManageProductsComponent } from './business/admin_components/manage-products/manage-products.component';
 import { ManageUsersComponent } from './business/admin_components/manage-users/manage-users.component';
+import { ProfileComponent } from './business/components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'admin/manageProducts', component: ManageProductsComponent },
   { path: 'admin/manageUsers', component: ManageUsersComponent },
   { path: 'products/:id', component: SingleProductComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

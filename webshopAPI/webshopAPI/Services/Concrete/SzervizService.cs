@@ -30,6 +30,7 @@ namespace webshopAPI.Services.Concrete
                     szervizDTO.Email = item.Email;
                     szervizDTO.ErrorDescription = item.ErrorDescription;
                     szervizDTO.OrderNumber = item.OrderId;
+                    szervizDTO.Solved = item.Solved;
                     szervizDTOs.Add(szervizDTO);
                 }
                 return szervizDTOs;
@@ -60,6 +61,30 @@ namespace webshopAPI.Services.Concrete
                 throw;
             }
 
+        }
+
+        public void solveService(List<SzervizDTO> services)
+        {
+            try
+            {
+                List<Service> serviceList = new List<Service>();
+                Service service;
+
+                foreach (var item in services)
+                {
+                    service = new();
+
+                    service.Id = item.Id;
+                    serviceList.Add(service);
+                }
+
+                _szervizRepository.solveService(serviceList);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

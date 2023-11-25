@@ -20,7 +20,7 @@ namespace webshopAPI.domain.Repositories.Concrete
         {
             try
             {
-                List<Service> services = _webshopContext.Service.Where(x => x.Solved == false).ToList();
+                List<Service> services = _webshopContext.Service.ToList();
 
                 return services;
             }
@@ -36,6 +36,25 @@ namespace webshopAPI.domain.Repositories.Concrete
             try
             {
                 _webshopContext.Service.Add(szerviz);
+                _webshopContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void solveService(List<Service> services)
+        {
+            try
+            {
+                Service service;
+                foreach (var item in services)
+                {
+                    service = _webshopContext.Service.Where(x => x.Id == item.Id).FirstOrDefault();
+                    service.Solved = true;
+                }
                 _webshopContext.SaveChanges();
             }
             catch (Exception)

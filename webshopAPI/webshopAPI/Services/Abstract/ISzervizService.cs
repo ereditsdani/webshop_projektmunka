@@ -6,5 +6,6 @@ namespace webshopAPI.Services.Abstract
     {
         public void saveSzervizForm(SzervizDTO form);
         public List<SzervizDTO> getServices();
+        public void solveService(List<SzervizDTO> services);
     }
 }

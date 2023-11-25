@@ -11,5 +11,6 @@ namespace webshopAPI.domain.Repositories.Abstract
     {
         public void saveSzervizForm(Service szerviz);
         public List<Service> GetServices();
+        public void solveService(List<Service> services);
     }
 }

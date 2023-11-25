@@ -1,0 +1,18 @@
+<div class="centered-card">
+  <p-card>
+    <div class="user-profile">
+      <div class="profile-header">
+        <h2>{{ this.loggedInUserDTO?.username }}</h2>
+        <p>Email: {{ this.loggedInUserDTO?.email }}</p>
+      </div>
+      <div class="profile-details">
+        <h3>Személyes információk</h3>
+        <p>
+          Cím: {{ this.loggedInUserDTO?.postalNumber }},
+          {{ this.loggedInUserDTO?.address }}
+        </p>
+        <p>Telefonszám: {{ this.loggedInUserDTO?.phoneNumber }}</p>
+      </div>
+    </div>
+  </p-card>
+</div>

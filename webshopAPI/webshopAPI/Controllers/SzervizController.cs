@@ -19,6 +19,19 @@ namespace webshopAPI.Controllers
             _orderService = orderService;
         }
 
+        [HttpGet]
+        public List<SzervizDTO> GetServices()
+        {
+            try
+            {
+                return _szervizService.getServices();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         [HttpPost]
         public IActionResult saveSzervizForm([FromForm] string jsonData)
         {
@@ -36,7 +49,7 @@ namespace webshopAPI.Controllers
                 //tood: majd ha működik az order akkor kell ezt megcsinálnom tovább
                 //_szervizService.saveScrappingForm(scrappingForm);
 
-                
+
             }
             catch (Exception e)
             {
@@ -45,12 +58,13 @@ namespace webshopAPI.Controllers
             }
         }
 
-        [HttpGet]
-        public List<SzervizDTO> GetServices()
+        [HttpPost]
+        public void solveService([FromForm] string szervizJson)
         {
             try
             {
-                return _szervizService.getServices();
+                List<SzervizDTO> services = JsonConvert.DeserializeObject<List<SzervizDTO>>(szervizJson);
+                _szervizService.solveService(services);
             }
             catch (Exception)
             {

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from '../Models/Order';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AnonymousSubject } from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: 'root',
@@ -22,11 +23,15 @@ export class OrderService {
     this.orders$ = this._orders.asObservable();
   }
 
-  saveOrder(order: any) {
+  saveOrder(order: any, userId: any, shippingMethod: any, paymentMethod: any) {
     let options = {
       headers: new HttpHeaders(),
       withCredentials: true,
-      params: {},
+      params: {
+        userId: userId,
+        shippingMethod: shippingMethod,
+        paymentMethod: paymentMethod,
+      },
     };
     const formData = new FormData();
     formData.append('orderJson', JSON.stringify(order));
@@ -36,6 +41,29 @@ export class OrderService {
       .subscribe({
         error: (error: any) => {
           console.log(error.message);
+        },
+      });
+  }
+
+  deleteOrder(orders: any) {
+    let options = {
+      headers: new HttpHeaders(),
+      withCredentials: true,
+      params: {},
+    };
+    const formData = new FormData();
+    formData.append('orderJson', JSON.stringify(orders));
+    console.log(formData.get('orderJson'));
+
+    return this.http
+      .post('https://localhost:7054/api/Order/DeleteOrder', formData, options)
+      .subscribe({
+        error: (error: any) => {
+          console.log(error.message);
+        },
+        complete: () => {
+          console.log('faxa');
+          this.getOrdersFromDb();
         },
       });
   }

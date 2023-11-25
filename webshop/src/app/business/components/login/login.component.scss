@@ -1,60 +1,54 @@
 /* Center the login form horizontally and vertically */
 .login-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh; /* Adjust height to your preference */
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%; /* Adjust width to make it slightly bigger */
-    max-width: 700px; /* Set a maximum width to ensure it doesn't get too large */
-    background-color: white;
-    border-radius: 30px;
-    padding: 10vh; /* Adjust padding to your preference */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-form h2 {
-    margin-bottom: 20px; /* Adjust margin to your preference */
-  }
-  
-  .p-field {
-    width: 100%;
-    margin-bottom: 15px; /* Adjust margin to your preference */
-  }
-  
-  button {
-    width: 100%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh; /* Adjust height to your preference */
+}
 
-  .p-field {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align labels and inputs to start */
-    margin-bottom: 15px;
-  }
-  
-  .p-field {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align labels and inputs to start */
-    margin-bottom: 15px;
-  }
-  
-  .p-field input {
-    width: 100%; /* Change this to a higher percentage for wider textboxes, e.g., 80% */
-    padding: 0.5rem;
-    font-size: 1rem; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%; /* Adjust width to make it slightly bigger */
+  max-width: 700px; /* Set a maximum width to ensure it doesn't get too large */
+  background-color: white;
+  border-radius: 30px;
+  padding: 10vh; /* Adjust padding to your preference */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-  .formclass{
-    width: 100%;
-  }
-  
-  
+.login-form h2 {
+  margin-bottom: 20px; /* Adjust margin to your preference */
+}
+
+.p-field {
+  width: 100%;
+  margin-bottom: 15px; /* Adjust margin to your preference */
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels and inputs to start */
+  margin-bottom: 15px;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels and inputs to start */
+  margin-bottom: 15px;
+}
+
+.p-field input {
+  width: 100%; /* Change this to a higher percentage for wider textboxes, e.g., 80% */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formclass {
+  width: 100%;
+}

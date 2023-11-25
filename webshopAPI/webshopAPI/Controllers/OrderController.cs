@@ -30,12 +30,26 @@ namespace webshopAPI.Controllers
             }
         }
         [HttpPost]
-        public void SaveOrder([FromForm] string orderJson)
+        public void SaveOrder([FromForm] string orderJson, [FromQuery] string userId, [FromQuery] string shippingMethod, [FromQuery] string paymentMethod)
         {
             try
             {
                 List<ProductDTO> products = JsonConvert.DeserializeObject<List<ProductDTO>>(orderJson);
-                _orderService.saveOrder(products);
+                _orderService.saveOrder(products, userId, shippingMethod, paymentMethod);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public void DeleteOrder([FromForm] string orderJson)
+        {
+            try
+            {
+                List<OrderDTO> orders = JsonConvert.DeserializeObject<List<OrderDTO>>(orderJson);
+                _orderService.deleteOrders(orders);
             }
             catch (Exception)
             {

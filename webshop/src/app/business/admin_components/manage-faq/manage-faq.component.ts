@@ -49,7 +49,7 @@ export class ManageFaqComponent {
     this.messageService.add({
       severity: 'success',
       summary: 'Siker',
-      detail: 'GyIK törölve!',
+      detail: 'GyIK(ek) törölve!',
     });
   }
 

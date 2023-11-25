@@ -3,4 +3,5 @@ export class Szerviz {
   email: string = '';
   errorDescription: string = '';
   orderNumber: string = '';
+  solved: boolean = false;
 }

@@ -54,6 +54,19 @@ body {
   }
 }
 
+.loginButton {
+  .p-button {
+    background-color: rgb(98, 197, 98);
+    border: 1px solid green;
+    margin-top: 10px;
+    width: 100% !important;
+  }
+  .p-button:hover {
+    background-color: green !important;
+    border: 1px solid green;
+  }
+}
+
 .removeCartItem {
   .p-button {
     border-radius: 50px;
@@ -92,7 +105,7 @@ body {
   }
 
   .p-autocomplete-panel {
-    min-height: 600px;
+    min-height: 400px;
   }
 }
 

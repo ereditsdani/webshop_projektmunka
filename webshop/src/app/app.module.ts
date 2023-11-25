@@ -52,6 +52,8 @@ import { ManageUsersComponent } from './business/admin_components/manage-users/m
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
+import { ProfileComponent } from './business/components/profile/profile.component';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     ManageFaqComponent,
     ManageOrdersComponent,
     ManageUsersComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,6 +112,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     ConfirmDialogModule,
     DialogModule,
     ToolbarModule,
+    TabViewModule,
   ],
   providers: [CartService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],

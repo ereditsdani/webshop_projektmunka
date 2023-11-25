@@ -11,16 +11,40 @@ namespace webshopAPI.Services.Concrete
         private readonly IProductRepository _productRepository;
         private readonly IProductCategoryRepository _productCategoryRepository;
         private readonly IVendorRepository _vendorRepository;
+        private readonly IUsersRepository _usersRepository;
 
         public OrderService(IOrderRepository orderRepository, 
             IProductRepository productRepository, 
             IProductCategoryRepository productCategoryRepository,
-            IVendorRepository vendorRepository)
+            IVendorRepository vendorRepository,
+            IUsersRepository usersRepository)
         {
             _orderRepository = orderRepository;
             _productRepository = productRepository;
             _productCategoryRepository = productCategoryRepository;
             _vendorRepository = vendorRepository;
+            _usersRepository = usersRepository;
+        }
+
+        public void deleteOrders(List<OrderDTO> orders)
+        {
+            try
+            {
+                List<Order> deleteOrders = new List<Order>();
+                Order order;
+                foreach (var item in orders)
+                {
+                    order = new();
+                    order.Id = item.Id;
+                    deleteOrders.Add(order);
+                }
+                _orderRepository.deleteOrders(deleteOrders);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool doesOrderExist(int orderId)
@@ -49,14 +73,27 @@ namespace webshopAPI.Services.Concrete
                 Product product;
                 Vendor vendor;
                 ProductCategory productCategory;
+                Users user;
 
                 foreach (var item in orders)
                 {
                     orderDTO = new();
                     orderDTO.Id = item.Id;
                     orderDTO.PaymentMethod = item.PaymentMethod;
+                    orderDTO.ShipmentMethod = item.ShipmentMethod;
                     orderDTO.Timestamp = item.Timestamp;
-                    orderDTO.UserId = item.UserId;
+                    user = _usersRepository.getUserById(item.UserId);
+
+                    orderDTO.User = new();
+                    orderDTO.User.Id = user.Id;
+                    orderDTO.User.Username = user.Username;
+                    orderDTO.User.Password = user.Password;
+                    orderDTO.User.Email = user.Email;
+                    orderDTO.User.AvatarUrl = user.AvatarUrl;
+                    orderDTO.User.Address = user.Address;
+                    orderDTO.User.PhoneNumber = user.PhoneNumber;
+                    orderDTO.User.Admin = user.Admin;
+                    orderDTO.User.PostalNumber = user.PostalNumber;
 
                     orderItems = _orderRepository.GetOrderItemsByOrderId(orderDTO.Id);
                     orderItemDTOs = new();
@@ -98,7 +135,7 @@ namespace webshopAPI.Services.Concrete
             }
         }
 
-        public void saveOrder(List<ProductDTO> products)
+        public void saveOrder(List<ProductDTO> products, string userId, string shippingMethod, string paymentMethod)
         {
             List<Product> returnProducts = new();
             Product seged;
@@ -120,7 +157,7 @@ namespace webshopAPI.Services.Concrete
                 returnProducts.Add(seged);
             }
 
-            _orderRepository.saveOrder(returnProducts);
+            _orderRepository.saveOrder(returnProducts, userId, shippingMethod, paymentMethod);
         }
     }
 }

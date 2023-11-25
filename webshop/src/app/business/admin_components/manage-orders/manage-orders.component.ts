@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from '../../Models/Order';
 import { OrderService } from '../../services/order.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-manage-orders',
@@ -11,8 +12,12 @@ import { OrderService } from '../../services/order.service';
 export class ManageOrdersComponent {
   orders$: Observable<Order[]> = new Observable<Order[]>();
   orders: Order[] = [];
+  selectedOrders: Order[] = [];
 
-  constructor(private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.orderService.getOrdersFromDb();
@@ -20,6 +25,16 @@ export class ManageOrdersComponent {
     this.orders$ = this.orderService.orders$;
     this.orderService.orders$.subscribe((x) => {
       this.orders = x;
+    });
+  }
+
+  deleteSelectedOrders() {
+    this.orderService.deleteOrder(this.selectedOrders);
+    this.selectedOrders = [];
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Siker',
+      detail: 'Rendelés(ek) törölve!',
     });
   }
 }

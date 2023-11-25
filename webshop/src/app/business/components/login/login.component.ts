@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  username:string | undefined;
-  password:string | undefined;
+  username: string | undefined;
+  password: string | undefined;
 
-  onSubmit() {
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
+  constructor(private userService: UserService) {}
 
-    // Here you can add logic to authenticate the user and connect to the database
-    // For simplicity, we're just logging the credentials
+  login() {
+    this.userService.loginUser(this.username, this.password);
   }
 }

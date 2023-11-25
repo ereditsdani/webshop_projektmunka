@@ -24,15 +24,30 @@
     <h2>Rendelési adatok</h2>
     <span class="p-input-icon-left">
       <i class="pi pi-send"></i>
-      <input type="text" pInputText placeholder="Email cím" />
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="email"
+        placeholder="Email cím"
+      />
     </span>
     <span class="p-input-icon-left">
       <i class="pi pi-phone"></i>
-      <input type="text" pInputText placeholder="Telefonszám" />
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="phoneNumber"
+        placeholder="Telefonszám"
+      />
     </span>
     <span class="p-input-icon-left">
       <i class="pi pi-building"></i>
-      <input type="text" pInputText placeholder="Szállítási cím" />
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="address"
+        placeholder="Szállítási cím"
+      />
     </span>
     <br />
     <span class="p-input-icon-left">
