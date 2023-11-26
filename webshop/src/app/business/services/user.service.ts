@@ -95,6 +95,37 @@ export class UserService {
       });
   }
 
+  changeUser(changedUser: any) {
+    let options = {
+      headers: new HttpHeaders(),
+      withCredentials: true,
+      params: {},
+    };
+    const formData = new FormData();
+    formData.append('userJson', JSON.stringify(changedUser));
+    console.log(formData.get('userJson'));
+    return this.http
+      .post('https://localhost:7054/api/Auth/EditUser', formData, options)
+      .subscribe({
+        complete: () => {
+          this.getUsersFromDb();
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Siker',
+            detail: 'Sikeres megváltoztatás!',
+          });
+        },
+        error: (error: any) => {
+          console.log(error.error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Hiba!',
+            detail: error.error,
+          });
+        },
+      });
+  }
+
   registerUser(registerForm: any) {
     let options = {
       headers: new HttpHeaders(),
@@ -115,7 +146,7 @@ export class UserService {
           });
         },
         error: (error: any) => {
-          console.log(error.message);
+          console.log(error.error);
           this.messageService.add({
             severity: 'error',
             summary: 'Hiba!',

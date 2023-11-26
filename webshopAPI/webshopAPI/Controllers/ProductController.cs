@@ -55,5 +55,19 @@ namespace webshopAPI.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public void EditProduct([FromForm] string productJson)
+        {
+            try
+            {
+                ProductDTO product = JsonConvert.DeserializeObject<ProductDTO>(productJson);
+                _productService.EditProduct(product);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

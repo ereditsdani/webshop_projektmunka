@@ -11,6 +11,7 @@ namespace webshopAPI.domain.Repositories.Abstract
     {
         public List<Product> GetProducts();
         public void SaveNewProduct(Product product);
+        public void EditProduct(Product product);
         public void DeleteProduct(List<Product> products);
         public Product GetProductById(int productId);
     }

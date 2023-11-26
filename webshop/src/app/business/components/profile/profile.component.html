@@ -15,4 +15,92 @@
       </div>
     </div>
   </p-card>
+  <p-table
+    [value]="filteredOrders"
+    dataKey="id"
+    [tableStyle]="{ 'min-width': '60rem' }"
+    [rows]="5"
+    [paginator]="true"
+    currentPageReportTemplate="{first} és {last} közötti elemek megjelenítése {totalRecords} adatból"
+    [showCurrentPageReport]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 5rem"></th>
+        <th>Rendelés ID</th>
+        <th>Felhasználó</th>
+        <th>Kiszállítás módja</th>
+        <th>Fizetés módja</th>
+        <th>Rendelés időpontja</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order let-expanded="expanded">
+      <tr>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            [pRowToggler]="order"
+            class="p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+        </td>
+        <td>#{{ order.id }}</td>
+        <td>{{ order.user.username }}</td>
+        <td>{{ order.shipmentMethod }}</td>
+        <td>{{ order.paymentMethod }}</td>
+        <td>{{ order.timestamp | date : "yyyy/MM/dd hh:mm:ss" }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-order>
+      <tr>
+        <td colspan="7">
+          <div class="p-3">
+            <p-table [value]="order.orderItems" dataKey="id">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="max-width: 200px">Terméknév</th>
+                  <th style="max-width: 250px">Termékleírás</th>
+                  <th style="max-width: 50px">Mennyiség</th>
+                  <th>Ár</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-orderItem>
+                <tr>
+                  <td style="max-width: 200px">
+                    {{ orderItem.product.productName }}
+                  </td>
+                  <td style="max-width: 250px">
+                    {{ orderItem.product.productDescription }}
+                  </td>
+                  <td style="max-width: 50px">{{ orderItem.quantity }} db</td>
+                  <td>{{ orderItem.product.price | number : "1.0-0" }} Ft</td>
+                </tr>
+                <tr *ngIf="isSummaryVisible(orderItem, order.orderItems)">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <b
+                      >{{
+                        getSummaryPrice(order.orderItems) | number : "1.0-0"
+                      }}
+                      Ft
+                    </b>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-between">
+        Összesen {{ filteredOrders ? filteredOrders.length : 0 }} db rendelés
+        található.
+      </div>
+    </ng-template>
+  </p-table>
 </div>

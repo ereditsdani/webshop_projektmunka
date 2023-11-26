@@ -45,6 +45,25 @@ namespace webshopAPI.domain.Repositories.Concrete
             _webshopContext.SaveChanges();
         }
 
+        public void editUser(Users user)
+        {
+            try
+            {
+                Users newUser = _webshopContext.Users.Where(x => x.Id == user.Id).FirstOrDefault();
+                newUser.Username = user.Username;
+                newUser.Email = user.Email;
+                newUser.PostalNumber = user.PostalNumber;
+                newUser.Address = user.Address;
+                newUser.PhoneNumber = user.PhoneNumber;
+                _webshopContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public Users getUserById(int userId)
         {
             try

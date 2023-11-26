@@ -38,6 +38,29 @@ export class ProductService {
       });
   }
 
+  editProduct(product: any) {
+    let options = {
+      headers: new HttpHeaders(),
+      withCredentials: true,
+      params: {},
+    };
+    const formData = new FormData();
+    formData.append('productJson', JSON.stringify(product));
+    console.log(formData.get('productJson'));
+
+    return this.http
+      .post('https://localhost:7054/api/Product/EditProduct', formData, options)
+      .subscribe({
+        error: (error: any) => {
+          console.log(error.message);
+        },
+        complete: () => {
+          console.log('faxa');
+          this.getProductFromDb();
+        },
+      });
+  }
+
   saveNewProduct(product: any) {
     let options = {
       headers: new HttpHeaders(),

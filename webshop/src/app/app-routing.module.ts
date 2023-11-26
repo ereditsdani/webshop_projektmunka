@@ -18,8 +18,17 @@ import { ManageOrdersComponent } from './business/admin_components/manage-orders
 import { ManageProductsComponent } from './business/admin_components/manage-products/manage-products.component';
 import { ManageUsersComponent } from './business/admin_components/manage-users/manage-users.component';
 import { ProfileComponent } from './business/components/profile/profile.component';
+import { authGuard } from './business/auth.guard';
+import { AboutusComponent } from './ui/aboutus/aboutus.component';
+import { ShippingComponent } from './ui/shipping/shipping.component';
+import { PaymentComponent } from './ui/payment/payment.component';
+import { RefundComponent } from './ui/refund/refund.component';
 
 const routes: Routes = [
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'shipping', component: ShippingComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'refund', component: RefundComponent },
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -29,13 +38,41 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'finalizeorder', component: FinalizeOrderComponent },
-  { path: 'admin/home', component: AdminHomeComponent },
-  { path: 'admin/managePromotionMail', component: AdminPromotionMailComponent },
-  { path: 'admin/manageService', component: AdminServiceComponent },
-  { path: 'admin/manageFaq', component: ManageFaqComponent },
-  { path: 'admin/manageOrders', component: ManageOrdersComponent },
-  { path: 'admin/manageProducts', component: ManageProductsComponent },
-  { path: 'admin/manageUsers', component: ManageUsersComponent },
+  {
+    path: 'admin/home',
+    canActivate: [authGuard],
+    component: AdminHomeComponent,
+  },
+  {
+    path: 'admin/managePromotionMail',
+    canActivate: [authGuard],
+    component: AdminPromotionMailComponent,
+  },
+  {
+    path: 'admin/manageService',
+    canActivate: [authGuard],
+    component: AdminServiceComponent,
+  },
+  {
+    path: 'admin/manageFaq',
+    canActivate: [authGuard],
+    component: ManageFaqComponent,
+  },
+  {
+    path: 'admin/manageOrders',
+    canActivate: [authGuard],
+    component: ManageOrdersComponent,
+  },
+  {
+    path: 'admin/manageProducts',
+    canActivate: [authGuard],
+    component: ManageProductsComponent,
+  },
+  {
+    path: 'admin/manageUsers',
+    canActivate: [authGuard],
+    component: ManageUsersComponent,
+  },
   { path: 'products/:id', component: SingleProductComponent },
   { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

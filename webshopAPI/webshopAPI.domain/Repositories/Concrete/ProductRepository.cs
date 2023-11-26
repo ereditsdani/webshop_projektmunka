@@ -36,6 +36,31 @@ namespace webshopAPI.domain.Repositories.Concrete
             }
         }
 
+        public void EditProduct(Product product)
+        {
+            try
+            {
+                Product oldProduct = _webshopContext.Product.Where(x => x.Id == product.Id).FirstOrDefault();
+
+                oldProduct.ProductName = product.ProductName;
+                oldProduct.ProductDescription = product.ProductDescription;
+                oldProduct.Price = product.Price;
+                oldProduct.Discount = product.Discount;
+                oldProduct.Quantity = product.Quantity;
+                oldProduct.CategoryId = product.CategoryId;
+                oldProduct.VendorId = product.VendorId;
+                oldProduct.Trending = product.Trending;
+                oldProduct.ImageUrl = product.ImageUrl;
+                oldProduct.OurChoice = product.OurChoice;
+                _webshopContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public Product GetProductById(int productId)
         {
             try

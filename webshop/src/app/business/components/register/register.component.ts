@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,10 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private messageService: MessageService
+  ) {}
 
   registerForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -21,10 +25,19 @@ export class RegisterComponent {
   });
 
   register() {
-    console.log(this.registerForm.value);
-    this.userService.registerUser(this.registerForm.value);
-    this.registerForm.reset();
-    //jelszót össze kell haosnlítani
-    //this.registerForm.reset();
+    if (
+      this.registerForm.get('password')?.value !=
+      this.registerForm.get('passwordAgain')?.value
+    ) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Hiba',
+        detail: 'A két jelszónak egyeznie kell!',
+      });
+    } else {
+      console.log(this.registerForm.value);
+      this.userService.registerUser(this.registerForm.value);
+      this.registerForm.reset();
+    }
   }
 }

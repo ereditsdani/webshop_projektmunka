@@ -50,6 +50,11 @@ export class SingleProductComponent {
     }
     if (product.orderAmount < product.quantity) {
       product.orderAmount++;
+      const foundItem = this.products.find((item) => item.id === product.id);
+
+      if (foundItem) {
+        foundItem.quantity = Math.max(0, foundItem.quantity - 1);
+      }
       this.cartService.addToCart(product);
 
       this.displayMessage(
@@ -58,8 +63,9 @@ export class SingleProductComponent {
         `Hozzáadtál 1x ${product.productName} elemet a kosárhoz!`
       );
 
-      // Manually trigger change detection
       this.triggerChangeDetection();
+    } else {
+      this.displayMessage('error', 'Hiba!', `A termék elfogyott!`);
     }
   }
 

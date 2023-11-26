@@ -54,6 +54,10 @@ import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ProfileComponent } from './business/components/profile/profile.component';
 import { TabViewModule } from 'primeng/tabview';
+import { AboutusComponent } from './ui/aboutus/aboutus.component';
+import { ShippingComponent } from './ui/shipping/shipping.component';
+import { PaymentComponent } from './ui/payment/payment.component';
+import { RefundComponent } from './ui/refund/refund.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +85,10 @@ import { TabViewModule } from 'primeng/tabview';
     ManageOrdersComponent,
     ManageUsersComponent,
     ProfileComponent,
+    AboutusComponent,
+    ShippingComponent,
+    PaymentComponent,
+    RefundComponent,
   ],
   imports: [
     BrowserModule,

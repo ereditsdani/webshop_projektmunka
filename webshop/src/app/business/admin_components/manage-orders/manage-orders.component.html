@@ -63,18 +63,35 @@
           <p-table [value]="order.orderItems" dataKey="id">
             <ng-template pTemplate="header">
               <tr>
-                <th>Terméknév</th>
-                <th>Termékleírás</th>
-                <th>Mennyiség</th>
+                <th style="max-width: 200px">Terméknév</th>
+                <th style="max-width: 250px">Termékleírás</th>
+                <th style="max-width: 50px">Mennyiség</th>
                 <th>Ár</th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-orderItem>
               <tr>
-                <td>{{ orderItem.product.productName }}</td>
-                <td>{{ orderItem.product.productDescription }}</td>
-                <td>{{ orderItem.quantity }} db</td>
-                <td>{{ orderItem.product.price }} Ft</td>
+                <td style="max-width: 200px">
+                  {{ orderItem.product.productName }}
+                </td>
+                <td style="max-width: 250px">
+                  {{ orderItem.product.productDescription }}
+                </td>
+                <td style="max-width: 50px">{{ orderItem.quantity }} db</td>
+                <td>{{ orderItem.product.price | number : "1.0-0" }} Ft</td>
+              </tr>
+              <tr *ngIf="isSummaryVisible(orderItem, order.orderItems)">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <b
+                    >{{
+                      getSummaryPrice(order.orderItems) | number : "1.0-0"
+                    }}
+                    Ft
+                  </b>
+                </td>
               </tr>
             </ng-template>
           </p-table>

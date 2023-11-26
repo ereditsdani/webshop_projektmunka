@@ -14,5 +14,6 @@ namespace webshopAPI.domain.Repositories.Abstract
         Users getUserById(int userId);
         public void deleteUser(List<Users> users);
         public void changeAdminStateForUser(List<Users> users);
+        public void editUser(Users user);
     }
 }

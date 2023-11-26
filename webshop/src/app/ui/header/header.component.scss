@@ -1,9 +1,7 @@
-
 .navbar {
   background-color: #d5e5f6; //#d5e5f6
   margin: 0;
-  padding: 5;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .navbar-brand {
@@ -11,8 +9,6 @@
 }
 
 .nav-link {
-  margin: 10px;
-  padding: 10px;
   width: 150px;
   border-radius: 30px;
   justify-content: center;
@@ -23,6 +19,6 @@
   background-color: #fdfbfc;
 }
 
-.link-hover:hover{
+.link-hover:hover {
   background-color: #fdfbfc;
 }

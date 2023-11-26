@@ -85,7 +85,7 @@ namespace webshopAPI.Controllers
             user.PasswordSalt = passwordSalt;
 
             _usersService.registerUser(user);
-            return Ok("Sikeres regisztráció!");
+            return Ok();
         }
         [HttpPost]
         public async Task<ActionResult<string>> Login(string requestPassword, string requestUsername)
@@ -115,6 +115,20 @@ namespace webshopAPI.Controllers
             }
             string token = CreateToken(CorrectUser);
             return Ok(returnUser);
+        }
+
+        [HttpPost]
+        public void EditUser([FromForm] string userJson)
+        {
+            try
+            {
+                UserDTO user = JsonConvert.DeserializeObject<UserDTO>(userJson);
+                _usersService.editUser(user);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private string CreateToken(User user)

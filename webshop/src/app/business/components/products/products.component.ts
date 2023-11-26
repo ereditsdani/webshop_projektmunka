@@ -89,6 +89,15 @@ export class ProductsComponent {
     }
     if (product.orderAmount < product.quantity) {
       product.orderAmount++;
+      const foundItem = this.filteredProducts.find(
+        (item) => item.id === product.id
+      );
+
+      if (foundItem) {
+        // Ensure the quantity doesn't go below zero
+        foundItem.quantity = Math.max(0, foundItem.quantity - 1);
+      }
+
       this.cartService.addToCart(product);
 
       this.displayMessage(
@@ -98,6 +107,8 @@ export class ProductsComponent {
       );
 
       this.triggerChangeDetection();
+    } else {
+      this.displayMessage('error', 'Hiba!', `A termék elfogyott!`);
     }
   }
 

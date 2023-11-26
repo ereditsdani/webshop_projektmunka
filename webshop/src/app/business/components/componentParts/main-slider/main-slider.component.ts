@@ -100,8 +100,14 @@ export class MainSliderComponent implements OnInit {
     if (product.orderAmount === undefined) {
       product.orderAmount = 0;
     }
-    if (product.orderAmount < product.quantity) {
+    if (product.quantity > 0) {
       product.orderAmount++;
+      const foundItem = this.products.find((item) => item.id === product.id);
+
+      if (foundItem) {
+        // Ensure the quantity doesn't go below zero
+        foundItem.quantity = Math.max(0, foundItem.quantity - 1);
+      }
       this.cartService.addToCart(product);
 
       this.displayMessage(

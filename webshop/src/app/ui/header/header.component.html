@@ -110,6 +110,15 @@
             ></i
           ></a>
         </li>
+        <li *ngIf="isAdmin()">
+          <a
+            class="nav-link btn d-flex justify-content-center align-items-center link-hover"
+            [routerLink]="['/admin/home']"
+            [routerLinkActive]="['active']"
+            href="#"
+            >Admin</a
+          >
+        </li>
         <li *ngIf="updateLoginStatus()">
           <a
             class="nav-link btn d-flex justify-content-center align-items-center link-hover"

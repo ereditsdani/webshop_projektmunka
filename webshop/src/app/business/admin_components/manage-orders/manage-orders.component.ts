@@ -37,4 +37,19 @@ export class ManageOrdersComponent {
       detail: 'Rendelés(ek) törölve!',
     });
   }
+
+  isSummaryVisible(orderItem: any, orderItems: any) {
+    if (orderItems[orderItems.length - 1] == orderItem) {
+      return true;
+    }
+    return false;
+  }
+
+  getSummaryPrice(orderItems: any) {
+    let total = 0;
+    orderItems.forEach((element: any) => {
+      total += element.product.price * element.quantity;
+    });
+    return total;
+  }
 }

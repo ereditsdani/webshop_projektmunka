@@ -23,15 +23,19 @@
           <div>
             <h4 class="mb-1">{{ product.productName }}</h4>
             <h6 class="mt-0 mb-3">{{ product.price + " Ft" }}</h6>
-            <h6 class="mt-0 mb-3">
+            <h6 class="mt-0 mb-3" *ngIf="product.quantity > 0">
               {{ product.quantity + " Darab elérhető" }}
             </h6>
-
-            <p-button
-              icon="pi pi-cart-plus"
-              (click)="addToCart(product)"
-              class="cartButton"
-            ></p-button>
+            <ng-container *ngIf="product.quantity > 0">
+              <p-button
+                icon="pi pi-cart-plus"
+                (click)="addToCart(product)"
+                class="cartButton"
+              ></p-button>
+            </ng-container>
+            <ng-container *ngIf="product.quantity == 0">
+              A termék elfogyott
+            </ng-container>
           </div>
         </div>
       </ng-template>

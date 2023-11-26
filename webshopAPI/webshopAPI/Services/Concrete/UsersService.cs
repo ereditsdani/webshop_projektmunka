@@ -56,6 +56,27 @@ namespace webshopAPI.Services.Concrete
             }
         }
 
+        public void editUser(UserDTO user)
+        {
+            try
+            {
+                Users newUser = new Users();
+                newUser.Id = user.Id;
+                newUser.Username = user.Username;
+                newUser.Email = user.Email;
+                newUser.PostalNumber = user.PostalNumber;
+                newUser.Address = user.Address;
+                newUser.PhoneNumber = user.PhoneNumber;
+
+                _usersRepository.editUser(newUser);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<UserDTO> GetUsers()
         {
             try

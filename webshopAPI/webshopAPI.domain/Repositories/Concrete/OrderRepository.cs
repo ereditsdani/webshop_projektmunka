@@ -106,8 +106,11 @@ namespace webshopAPI.domain.Repositories.Concrete
         {
             Order lastOrder = _webshopContext.Order.OrderByDescending(x => x.Timestamp).FirstOrDefault();
             OrderItems orderItem;
+            Product product;
             foreach (var item in products)
             {
+                product = _webshopContext.Product.Where(x => x.Id == item.Id).FirstOrDefault();
+                product.Quantity = product.Quantity - item.Quantity;
                 orderItem = new();
                 orderItem.ProductId = item.Id;
                 orderItem.OrderId = lastOrder.Id;

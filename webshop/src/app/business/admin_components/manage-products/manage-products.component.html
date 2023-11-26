@@ -19,7 +19,6 @@
   >
     <ng-template pTemplate="caption">
       <div class="flex align-items-center justify-content-between">
-        <h5 class="m-0">Termékek kezelése</h5>
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input
@@ -36,6 +35,17 @@
           icon="pi pi-plus"
           class="p-button-success mr-2"
           (click)="openNewProductDialog()"
+          style="margin-left: 10px"
+        ></button>
+        <button
+          pButton
+          pRipple
+          label="Termék szerkesztése"
+          icon="pi pi-pencil"
+          class="p-button-success mr-2"
+          (click)="openEditProductDialog()"
+          style="margin-left: 10px"
+          [disabled]="!selectedProducts || selectedProducts.length != 1"
         ></button>
         <button
           pButton
@@ -45,6 +55,7 @@
           class="p-button-danger"
           (click)="deleteSelectedProducts()"
           [disabled]="!selectedProducts || !selectedProducts.length"
+          style="margin-left: 10px"
         ></button>
       </div>
     </ng-template>
@@ -53,15 +64,14 @@
         <th style="width: 4rem">
           <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
         </th>
-        <th>Terméknév</th>
-        <th>Termékleírás</th>
+        <th style="max-width: 100px">Terméknév</th>
+        <th style="max-width: 200px">Termékleírás</th>
         <th>Ár</th>
         <th>Leárazás</th>
         <th>Elérhető mennyiség</th>
         <th>Kategória</th>
         <th>Gyártó</th>
         <th>Trending</th>
-        <th>Kép</th>
         <th>Ajánlásunk</th>
       </tr>
     </ng-template>
@@ -70,16 +80,15 @@
         <td>
           <p-tableCheckbox [value]="product"></p-tableCheckbox>
         </td>
-        <td>{{ product.productName }}</td>
-        <td>{{ product.productDescription }}</td>
+        <td style="max-width: 100px">{{ product.productName }}</td>
+        <td style="max-width: 300px">{{ product.productDescription }}</td>
         <td>{{ product.price | number : "1.0-0" }} Ft</td>
         <td>{{ product.discount }} %</td>
         <td>{{ product.quantity }} db</td>
         <td>{{ product.productCategory.categoryName }}</td>
         <td>{{ product.productVendor.vendorName }}</td>
-        <td>{{ product.trending }}</td>
-        <td>kép</td>
-        <td>{{ product.ourChoice }}</td>
+        <td>{{ product.trending ? "Igen" : "Nem" }}</td>
+        <td>{{ product.ourChoice ? "Igen" : "Nem" }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
@@ -260,4 +269,173 @@
   </ng-template>
 </p-dialog>
 
+<p-dialog
+  [(visible)]="editProduct"
+  [style]="{ width: '450px' }"
+  header="Termék szerkesztése"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <form [formGroup]="editProductForm">
+      <div class="field">
+        <label for="name">Név</label>
+        <input
+          type="text"
+          pInputText
+          id="name"
+          placeholder="Termék neve..."
+          formControlName="productName"
+        />
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Leírás</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          placeholder="Termék leírása..."
+          formControlName="productDescription"
+        ></textarea>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Ár</label>
+        <p-inputNumber
+          inputId="integeronly"
+          placeholder="Termék ára..."
+          class="filterNumber"
+          [min]="0"
+          [showButtons]="true"
+          [step]="10000"
+          mode="currency"
+          currency="HUF"
+          formControlName="price"
+        ></p-inputNumber>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Kedvezmény (%)</label>
+        <p-inputNumber
+          inputId="integeronly"
+          placeholder="Kedvezmény..."
+          class="filterNumber"
+          [min]="0"
+          [max]="99"
+          [showButtons]="true"
+          [step]="1"
+          suffix=" %"
+          formControlName="discount"
+        ></p-inputNumber>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Mennyiség</label>
+        <p-inputNumber
+          inputId="integeronly"
+          placeholder="Elérhető mennyiség..."
+          class="filterNumber"
+          [min]="0"
+          [showButtons]="true"
+          [step]="1"
+          suffix=" db"
+          formControlName="quantity"
+        ></p-inputNumber>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Kategória</label>
+        <p-dropdown
+          [options]="productCategories"
+          optionLabel="categoryName"
+          placeholder="Válassz kategóriát"
+          formControlName="productCategory"
+        ></p-dropdown>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Forgalmazó</label>
+        <p-dropdown
+          [options]="vendors"
+          optionLabel="vendorName"
+          placeholder="Válassz forgalmazót"
+          formControlName="productVendor"
+        ></p-dropdown>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Felkapott</label>
+        <p-dropdown
+          [options]="actionOptions"
+          placeholder="Felkapott termék?"
+          formControlName="trending"
+        ></p-dropdown>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Kép url</label>
+        <input
+          type="text"
+          pInputText
+          id="name"
+          placeholder="Kép url link..."
+          required
+          formControlName="imageUrl"
+        />
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <div class="field">
+        <label for="name">Ajánlott</label>
+        <p-dropdown
+          [options]="actionOptions"
+          placeholder="Ajánlott termék?"
+          formControlName="ourChoice"
+        ></p-dropdown>
+        <!-- <small class="p-error" *ngIf="submitted && !product.name"
+        >Name is required.</small
+      > -->
+      </div>
+      <br /><br /><br /><br />
+    </form>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Vissza"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="hideEditProductDialog()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Mentés"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="sendEditProduct()"
+      [disabled]="editProductForm.invalid"
+    ></button>
+  </ng-template>
+</p-dialog>
 <p-toast></p-toast>

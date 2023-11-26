@@ -50,4 +50,19 @@ export class HeaderComponent implements OnInit {
 
     return loggedInUserDTO.username;
   }
+
+  isAdmin() {
+    let loggedInUserDTO;
+    const loggedInUserString = localStorage.getItem('loggedInUser');
+    if (loggedInUserString !== null) {
+      loggedInUserDTO = JSON.parse(JSON.parse(loggedInUserString));
+    }
+    if (loggedInUserDTO == undefined) {
+      return false;
+    }
+    if (loggedInUserDTO.admin == true) {
+      return true;
+    }
+    return false;
+  }
 }

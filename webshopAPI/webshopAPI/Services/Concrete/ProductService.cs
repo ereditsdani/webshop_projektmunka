@@ -40,6 +40,25 @@ namespace webshopAPI.Services.Concrete
             }
         }
 
+        public void EditProduct(ProductDTO product)
+        {
+            Product newProduct = new();
+
+            newProduct.Id = product.Id;
+            newProduct.ProductName = product.ProductName;
+            newProduct.ProductDescription = product.ProductDescription;
+            newProduct.Price = product.Price;
+            newProduct.Discount = product.Discount;
+            newProduct.Quantity = product.Quantity;
+            newProduct.CategoryId = product.ProductCategory.Id;
+            newProduct.VendorId = product.ProductVendor.Id;
+            newProduct.Trending = product.Trending;
+            newProduct.ImageUrl = product.ImageUrl;
+            newProduct.OurChoice = product.OurChoice;
+
+            _productRepository.EditProduct(newProduct);
+        }
+
         public List<ProductDTO> GetProducts()
         {
             try
