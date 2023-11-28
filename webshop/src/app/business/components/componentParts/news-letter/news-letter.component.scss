@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .outline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    background-color: white;
+    padding: 3vh;
+    border-radius: 10pt;
+  }
+  h1 {
+    margin-bottom: 5vh;
+  }
+  
+  .p-float-label {
+    margin: 2vh;
+  }
+  
+  .p-button-success {
+    margin: 2vh;
+  }
+  

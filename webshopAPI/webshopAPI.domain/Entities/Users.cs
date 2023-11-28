@@ -27,6 +27,10 @@ public partial class Users
 
     public string AvatarUrl { get; set; }
 
+    public byte[] PasswordHash { get; set; }
+
+    public byte[] PasswordSalt { get; set; }
+
     public virtual ICollection<Cart> Cart { get; set; } = new List<Cart>();
 
     public virtual ICollection<Review> Review { get; set; } = new List<Review>();

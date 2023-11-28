@@ -17,6 +17,8 @@ public partial class Order
 
     public string ShipmentMethod { get; set; }
 
+    public bool? Active { get; set; }
+
     public virtual ICollection<OrderItems> OrderItems { get; set; } = new List<OrderItems>();
 
     public virtual ICollection<Service> Service { get; set; } = new List<Service>();

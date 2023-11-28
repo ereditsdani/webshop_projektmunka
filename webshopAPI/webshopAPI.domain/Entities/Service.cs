@@ -15,5 +15,7 @@ public partial class Service
 
     public int OrderId { get; set; }
 
+    public bool? Solved { get; set; }
+
     public virtual Order Order { get; set; }
 }

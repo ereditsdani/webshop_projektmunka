@@ -78,6 +78,10 @@ public partial class WebshopContext : DbContext
                 .IsRequired()
                 .HasMaxLength(100)
                 .HasColumnName("question");
+            entity.Property(e => e.QuestionTitle)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnName("questionTitle");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -85,6 +89,7 @@ public partial class WebshopContext : DbContext
             entity.ToTable("order");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Active).HasColumnName("active");
             entity.Property(e => e.PaymentMethod)
                 .IsRequired()
                 .HasMaxLength(50)
@@ -135,11 +140,10 @@ public partial class WebshopContext : DbContext
             entity.Property(e => e.Price).HasColumnName("price");
             entity.Property(e => e.ProductDescription)
                 .IsRequired()
-                .HasMaxLength(50)
                 .HasColumnName("productDescription");
             entity.Property(e => e.ProductName)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .HasColumnName("productName");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
             entity.Property(e => e.Trending).HasColumnName("trending");
@@ -220,6 +224,7 @@ public partial class WebshopContext : DbContext
                 .HasMaxLength(500)
                 .HasColumnName("errorDescription");
             entity.Property(e => e.OrderId).HasColumnName("orderId");
+            entity.Property(e => e.Solved).HasColumnName("solved");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Service)
                 .HasForeignKey(d => d.OrderId)
@@ -239,7 +244,6 @@ public partial class WebshopContext : DbContext
                 .HasColumnName("address");
             entity.Property(e => e.Admin).HasColumnName("admin");
             entity.Property(e => e.AvatarUrl)
-                .IsRequired()
                 .HasMaxLength(100)
                 .HasColumnName("avatarUrl");
             entity.Property(e => e.Email)
@@ -247,9 +251,14 @@ public partial class WebshopContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("email");
             entity.Property(e => e.Password)
-                .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("password");
+            entity.Property(e => e.PasswordHash)
+                .IsRequired()
+                .HasColumnName("passwordHash");
+            entity.Property(e => e.PasswordSalt)
+                .IsRequired()
+                .HasColumnName("passwordSalt");
             entity.Property(e => e.PhoneNumber)
                 .IsRequired()
                 .HasMaxLength(50)

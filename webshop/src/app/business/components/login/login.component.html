@@ -1,0 +1,36 @@
+<div class="login-container">
+  <div class="login-form">
+    <h2>Belépés</h2>
+
+    <form class="formclass">
+      <div class="p-field">
+        <label for="username">Felhasználónév</label>
+        <input
+          pInputText
+          id="username"
+          type="text"
+          [(ngModel)]="username"
+          name="username"
+        />
+      </div>
+
+      <div class="p-field">
+        <label for="password">Jelszó</label>
+        <input
+          pInputText
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+        />
+      </div>
+
+      <p-button
+        icon="pi pi-lock-open"
+        (onClick)="login()"
+        label="Bejelentkezés"
+        class="loginButton"
+      ></p-button>
+    </form>
+  </div>
+</div>

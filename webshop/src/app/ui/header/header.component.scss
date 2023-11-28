@@ -1,20 +1,7 @@
-.nav-link.btn.btn-primary {
-  background-color: #fdfbfc;
-  /* Replace with the desired primary color */
-  /* Add any other styles you need */
-}
-
-.nav-link.btn.btn:hover {
-  /* You can keep the hover effect if needed */
-  background-color: #fdfbfc;
-  /* Ensure it matches the primary color */
-}
-
 .navbar {
   background-color: #d5e5f6; //#d5e5f6
   margin: 0;
-  padding: 5;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .navbar-brand {
@@ -22,8 +9,6 @@
 }
 
 .nav-link {
-  margin: 10px;
-  padding: 10px;
   width: 150px;
   border-radius: 30px;
   justify-content: center;
@@ -31,5 +16,9 @@
 }
 
 .active {
-  background-color: red;
+  background-color: #fdfbfc;
+}
+
+.link-hover:hover {
+  background-color: #fdfbfc;
 }

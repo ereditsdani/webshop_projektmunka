@@ -12,4 +12,6 @@ public partial class Faq
     public string Question { get; set; }
 
     public string Answer { get; set; }
+
+    public string QuestionTitle { get; set; }
 }

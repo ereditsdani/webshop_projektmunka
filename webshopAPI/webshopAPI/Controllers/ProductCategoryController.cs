@@ -28,8 +28,5 @@ namespace webshopAPI.Controllers
                 throw;
             }
         }
-
-
-
     }
 }

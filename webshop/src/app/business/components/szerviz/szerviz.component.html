@@ -1,0 +1,38 @@
+<div class="outline">
+  <form [formGroup]="szerviz" (ngSubmit)="submitForm()">
+    <h1>Szervíz igénylő</h1>
+
+    <span class="p-float-label correctLabelPlacement">
+      <input
+        pInputText
+        type="text"
+        class="p-inputtext-lg"
+        formControlName="email"
+      />
+      <label htmlFor="mail">Email cím</label>
+    </span>
+    <span class="p-float-label correctLabelPlacement">
+      <p-inputNumber inputId="integeronly" formControlName="orderNumber">
+      </p-inputNumber>
+      <label htmlFor="number-input">Rendelés azonosító</label>
+    </span>
+    <span class="p-float-label">
+      <textarea
+        rows="10"
+        cols="50"
+        pInputTextarea
+        max="200"
+        formControlName="errorDescription"
+      ></textarea>
+      <label for="add-summary">Hiba leírása</label>
+    </span>
+
+    <p-button
+      [label]="'Küldés'"
+      [class]="'accept'"
+      [type]="'submit'"
+      [disabled]="szerviz.invalid"
+    ></p-button>
+  </form>
+</div>
+<p-toast></p-toast>

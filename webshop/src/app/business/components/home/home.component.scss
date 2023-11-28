@@ -1,0 +1,63 @@
+body,
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2%;
+}
+
+.left-box {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 40vh;
+  max-width: 60%;
+  margin-right: 20px;
+}
+
+.right-box {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+  min-height: 10vh;
+  border-radius: 10px;
+}
+
+.small-box {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  height: 50%;
+}
+
+h3 {
+  margin: 5px;
+}
+
+.discountCorssedPrice {
+  text-decoration: line-through;
+  margin-bottom: 0px !important;
+  color: gray;
+}
+
+.marginDiscount {
+  margin-left: 5px;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-elements {
+  text-align: center;
+}

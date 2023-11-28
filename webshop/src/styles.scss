@@ -1,6 +1,155 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-
+// @import "primeng/resources/primeng.css";
+@import "~primeicons/primeicons.css";
 body {
   margin: 0 !important;
+}
+
+.cartButton {
+  .p-button.p-button-icon-only {
+    border-radius: 50px !important;
+    background-color: #d5e5f6 !important;
+    color: black;
+    border: 1px solid lightblue;
+  }
+  .p-button.p-button-icon-only:hover {
+    background-color: lightblue !important;
+    border: 1px solid lightblue !important;
+  }
+}
+
+.clearCartButton {
+  .p-button {
+    background-color: lightcoral;
+    border: 1px solid red;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .p-button:hover {
+    background-color: red !important;
+    border: 1px solid red !important;
+  }
+}
+
+.resetFilterButton {
+  .p-button {
+    background-color: lightcoral;
+    border: 1px solid red;
+  }
+  .p-button:hover {
+    background-color: red !important;
+    border: 1px solid red !important;
+  }
+}
+
+.placeOrderButton {
+  .p-button {
+    background-color: rgb(98, 197, 98);
+    border: 1px solid green;
+    margin-top: 10px;
+  }
+  .p-button:hover {
+    background-color: green !important;
+    border: 1px solid green;
+  }
+}
+
+.loginButton {
+  .p-button {
+    background-color: rgb(98, 197, 98);
+    border: 1px solid green;
+    margin-top: 10px;
+    width: 100% !important;
+  }
+  .p-button:hover {
+    background-color: green !important;
+    border: 1px solid green;
+  }
+}
+
+.removeCartItem {
+  .p-button {
+    border-radius: 50px;
+    background-color: lightcoral;
+    border: 1px solid red;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+  .p-button:hover {
+    background-color: red !important;
+    border: 1px solid red !important;
+  }
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: #d5e5f6 !important;
+}
+
+.addToCartButton {
+  .p-button:hover {
+    background-color: #d5e5f6 !important;
+    color: blue !important;
+  }
+}
+
+.discount {
+  .p-chip {
+    background-color: red;
+    color: white;
+  }
+}
+
+.searchAutocomplete {
+  .p-inputtext {
+    width: 800px;
+  }
+
+  .p-autocomplete-panel {
+    min-height: 400px;
+  }
+}
+
+.p-inputnumber-input {
+  width: 400px !important;
+}
+
+.filterNumber {
+  .p-inputnumber-input {
+    width: 12vw !important;
+  }
+}
+
+.p-card {
+  margin: 10px !important;
+  height: 380px !important;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.p-card .p-card-content {
+  padding: 0 !important;
+}
+
+.meshChip {
+  .p-chip .p-chip-text {
+    font-size: 10px;
+  }
+}
+
+.p-card .p-card-body {
+  padding: 15px;
+}
+
+.p-inputgroup input.p-inputtext {
+  width: 400px !important;
+}
+
+.p-dropdown {
+  width: 12vw;
+}
+
+.footerCards {
+  .p-card {
+    height: 60vh !important;
+  }
 }

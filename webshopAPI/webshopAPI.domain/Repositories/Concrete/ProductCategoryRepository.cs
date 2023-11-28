@@ -29,5 +29,19 @@ namespace webshopAPI.domain.Repositories.Concrete
                 throw;
             }
         }
+
+        public ProductCategory GetProductCategoryById(int productCategoryId)
+        {
+            try
+            {
+                ProductCategory productCategory = _webshopContext.ProductCategory.Where(x => x.Id == productCategoryId).FirstOrDefault();
+                return productCategory;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

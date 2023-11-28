@@ -1,9 +1,16 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
+using System.Text;
 using webshopAPI.domain.Entities;
 using webshopAPI.domain.Repositories.Abstract;
 using webshopAPI.domain.Repositories.Concrete;
+using webshopAPI.Services;
 using webshopAPI.Services.Abstract;
 using webshopAPI.Services.Concrete;
 
@@ -18,7 +25,20 @@ services.AddDbContext<WebshopContext>(ServiceLifetime.Transient, ServiceLifetime
 
 services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
 services.AddTransient<IProductCategoryService, ProductCategoryService>();
-
+services.AddTransient<IVendorRepository, VendorRepsoitory>();
+services.AddTransient<IVendorService, VendorService>();
+services.AddTransient<IProductRepository, ProductRepository>();
+services.AddTransient<IProductService, ProductService>();
+services.AddTransient<ISzervizService, SzervizService>();
+services.AddTransient<ISzervizRepository, SzervizRepository>();
+services.AddTransient<IFaqService, FaqService>();
+services.AddTransient<IFaqRepository, FaqRepository>();
+services.AddTransient<IOrderService, OrderService>();
+services.AddTransient<IOrderRepository, OrderRepository>();
+services.AddTransient<IUsersService, UsersService>();
+services.AddTransient<IUsersRepository, UsersRepository>();
+services.AddTransient<INewsletterRepository, NewsletterRepository>();
+services.AddTransient<INewsletterService, NewsletterService>();
 
 
 // Set up Corse Policy
@@ -35,6 +55,19 @@ services.AddCors(options =>
 }
 );
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.
+                UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+            ValidateIssuer = false,
+            ValidateAudience= false
+        };
+    });
+
 //Set body json size
 services.Configure<IISServerOptions>(options =>
 {
@@ -42,23 +75,34 @@ services.Configure<IISServerOptions>(options =>
 });
 
 ////Prevent JSON parse infinite loop
-//services.AddMvc().AddNewtonsoftJson(options =>
-//                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+services.AddMvc().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 services.AddMvc().AddJsonOptions(jsopts =>
 { jsopts.JsonSerializerOptions.MaxDepth = 4; }
 );
-
 // Add controllers
 services.AddControllers();
 
 
 // Add authentication
-services.AddAuthentication(IISDefaults.AuthenticationScheme);
-
+//services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
+});
+
+
 
 var app = builder.Build();
 
